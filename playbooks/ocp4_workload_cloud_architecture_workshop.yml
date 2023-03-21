@@ -1,0 +1,24 @@
+---
+
+- name: Install Workshop
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  run_once: true
+
+  tasks:
+    - name: "Install Workshop"
+      ansible.builtin.include_role:
+        name: ocp4_workload_cloud_architecture_workshop
+      when: >
+        ACTION is not defined or
+        ACTION is none or
+        ACTION|trim() == "" or
+        ACTION|trim() == "create"
+    - name: "Uninstall Workshop"
+      ansible.builtin.include_role:
+        name: ocp4_workload_cloud_architecture_workshop
+        tasks_from: uninstall
+      when: >
+        ACTION is defined and
+        ACTION|trim() == "uninstall"
