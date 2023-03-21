@@ -5,3 +5,16 @@ silent: false
 # Shared Users
 ocp4_workload_cloud_architecture_workshop_user_count: 1
 ocp4_workload_cloud_architecture_workshop_user_prefix: user
+
+# ------------------------------------------------
+# AMQ Streams Operator
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_amq_streams_channel: ""
+ocp4_workload_cloud_architecture_workshop_amq_streams_automatic_install_plan_approval: true
+ocp4_workload_cloud_architecture_workshop_amq_streams_starting_csv: ""
+ocp4_workload_cloud_architecture_workshop_amq_streams_wait_for_deploy: true
+ocp4_workload_cloud_architecture_workshop_amq_streams_use_catalog_snapshot: false
+ocp4_workload_cloud_architecture_workshop_amq_streams_catalogsource_name: redhat-operators-snapshot-amq-streams
+ocp4_workload_cloud_architecture_workshop_amq_streams_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_cloud_architecture_workshop_amq_streams_catalog_snapshot_image_tag: "v4.6_2021_05_10"

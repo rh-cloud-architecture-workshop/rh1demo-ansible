@@ -1,1 +1,4 @@
 ---
+
+- name: Install AMQ Streams operator
+  ansible.builtin.include_tasks: amq_streams_operator.yml
