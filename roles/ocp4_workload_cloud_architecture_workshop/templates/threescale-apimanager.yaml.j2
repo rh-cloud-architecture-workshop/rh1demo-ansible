@@ -1,0 +1,15 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  name: "{{ ocp4_workload_cloud_architecture_workshop_threescale_api_manager_name }}"
+spec:
+  tenantName: {{ ocp4_workload_cloud_architecture_workshop_threescale_tenant_name }}
+  wildcardDomain: "{{ r_openshift_subdomain }}"
+  resourceRequirementsEnabled: false
+  system:
+    fileStorage:
+      simpleStorageService:
+        configurationSecretRef:
+          name: s3-auth
+    database:
+      postgresql: {}

@@ -1,0 +1,75 @@
+---
+
+- name: Create namespace for 3scale - {{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}
+  kubernetes.core.k8s:
+    api_version: v1
+    kind: Namespace
+    name: '{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}'
+    state: present
+
+# Provision Minio
+- name: Install Minio
+  when: ocp4_workload_cloud_architecture_workshop_threescale_minio_stateful | bool
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'minio-stateful.yaml.j2') }}"
+
+- name: Waiting for Minio instance to be running
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: '{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}'
+    label_selectors:
+      - app = minio
+    field_selectors:
+      - status.phase=Running
+  register: r_minio_pod
+  retries: 20
+  delay: 10
+  until: r_minio_pod.resources | list | length == 1
+
+- name: Deploy 3scale S3 auth secret
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+    resource_definition: "{{ lookup('template', 'threescale-s3-auth-secret.yaml.j2') }}"
+
+- name: Deploy 3scale system-smtp secret
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+    definition: "{{ lookup('template', 'threescale-system-smtp.yaml.j2') }}"
+
+- name: Set facts for system seed secret
+  ansible.builtin.set_fact:
+    r_threescale_admin_access_token: "{{ lookup('password', '/dev/null chars=ascii_letters length=16') }}"
+    r_threescale_admin_password: "{{ lookup('password', '/dev/null chars=ascii_letters length=8') }}"
+    r_threescale_master_access_token: "{{ lookup('password', '/dev/null chars=ascii_letters length=8') }}"
+    r_threescale_master_password: "{{ lookup('password', '/dev/null chars=ascii_letters length=8') }}"
+
+- name: Check if system seed secret exists
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: secret
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+    name: system-seed
+  register: r_threescale_system_seed_secret
+
+- name: Create 3scale system-seed secret
+  when:
+    - r_threescale_system_seed_secret.resources | length == 0
+    - ocp4_workload_cloud_architecture_workshop_threescale_create_system_seed_secret is defined
+    - ocp4_workload_cloud_architecture_workshop_threescale_create_system_seed_secret | bool
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+    definition: "{{ lookup('template', 'threescale-system-seed.yaml.j2') }}"
+
+- name: Create 3scale api manager
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+    definition: "{{ lookup('template', 'threescale-apimanager.yaml.j2') }}"
+
+- name: Create 3scale tenants
+  ansible.builtin.include_tasks: threescale_tenant_mgmt.yml
