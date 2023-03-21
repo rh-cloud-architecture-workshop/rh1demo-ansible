@@ -14,3 +14,8 @@
 
 - name: Install Workshop
   ansible.builtin.include_tasks: workshop.yml
+
+- name: Setup Bookbag
+  when:
+    - ocp4_workload_cloud_architecture_workshop_bookbag | bool
+  ansible.builtin.include_tasks: bookbag.yml
