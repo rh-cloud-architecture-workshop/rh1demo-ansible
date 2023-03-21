@@ -154,3 +154,26 @@ ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base: 3scal
 ocp4_workload_cloud_architecture_workshop_threescale_admin_email_user: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_admin_email_domain: redhat.com
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password: "r3dh4t1!"
+
+# ------------------------------------------------
+# Workshop
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_namespace_prefix: globex
+
+# ApplicationSet
+ocp4_workload_cloud_architecture_workshop_applicationset_name: globex-gitops
+ocp4_workload_cloud_architecture_workshop_applicationset_namespace: openshift-gitops
+
+ocp4_workload_cloud_architecture_workshop_application_name: globex-gitops
+
+ocp4_workload_cloud_architecture_workshop_application_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
+ocp4_workload_cloud_architecture_workshop_application_repo_tag: main
+ocp4_workload_cloud_architecture_workshop_application_repo_path_gitops: globex-gitops/common
+ocp4_workload_cloud_architecture_workshop_application_repo_path_globex: globex
+
+ocp4_workload_cloud_architecture_workshop_kafka_security_protocol: SASL_PLAINTEXT
+ocp4_workload_cloud_architecture_workshop_kafka_sasl_mechanism: SCRAM-SHA-512
+ocp4_workload_cloud_architecture_workshop_kafka_client_id: globex
+ocp4_workload_cloud_architecture_workshop_kafka_client_secret: globex
