@@ -1,0 +1,7 @@
+*.retry
+**/inventories/inventory
+**/inventories/inventory-*
+
+.vscode
+
+.ansible-lint
