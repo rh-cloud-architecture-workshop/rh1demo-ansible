@@ -101,9 +101,19 @@ ocp4_workload_cloud_architecture_workshop_openshift_gitops_resource_customizatio
 # for instructions on how to set up catalog snapshot images
 
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_use_catalog_snapshot: false
-
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalogsource_name: redhat-operators-snapshot-gitops
-
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_image_tag: v4.10_2022_07_18
+
+# ------------------------------------------------
+# Threescale Operator
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_threescale_operator_channel: "threescale-2.13"
+ocp4_workload_cloud_architecture_workshop_threescale_operator_automatic_install_plan_approval: true
+ocp4_workload_cloud_architecture_workshop_threescale_operator_starting_csv: ""
+ocp4_workload_cloud_architecture_workshop_threescale_operator_wait_for_deploy: true
+ocp4_workload_cloud_architecture_workshop_threescale_operator_use_catalog_snapshot: false
+ocp4_workload_cloud_architecture_workshop_threescale_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
+ocp4_workload_cloud_architecture_workshop_threescale_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_cloud_architecture_workshop_threescale_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
