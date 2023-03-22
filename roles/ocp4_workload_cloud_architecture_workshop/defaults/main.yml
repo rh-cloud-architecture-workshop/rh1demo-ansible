@@ -140,7 +140,7 @@ ocp4_workload_cloud_architecture_workshop_threescale_smtp_userid: ""
 ocp4_workload_cloud_architecture_workshop_threescale_create_system_seed_secret: true
 ocp4_workload_cloud_architecture_workshop_threescale_master_domain: 3scale-master
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_name: 3scale
-ocp4_workload_cloud_architecture_workshop_threescale_admin_email: 3scale@redhat.com
+ocp4_workload_cloud_architecture_workshop_threescale_admin_email: 3scale@email.com
 ocp4_workload_cloud_architecture_workshop_threescale_admin_userid: admin
 ocp4_workload_cloud_architecture_workshop_threescale_master_userid: master
 
@@ -152,7 +152,7 @@ ocp4_workload_cloud_architecture_workshop_threescale_tenant_user_prefix: user
 
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_admin_email_user: 3scale
-ocp4_workload_cloud_architecture_workshop_threescale_admin_email_domain: redhat.com
+ocp4_workload_cloud_architecture_workshop_threescale_admin_email_domain: email.com
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password: "r3dh4t1!"
 
 # ------------------------------------------------
