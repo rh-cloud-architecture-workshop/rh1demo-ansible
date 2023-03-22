@@ -1,0 +1,46 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: threescale-tenant
+  namespace: {{ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace }}
+spec:
+  generators:
+  - list:
+      elements:
+{% for n in range(1, ocp4_workload_cloud_architecture_workshop_user_count | int + 1 ) %}
+      - user: {{ ocp4_workload_cloud_architecture_workshop_user_prefix }}{{ n }}
+{% endfor %}
+  template:
+    metadata:
+      name: "threescale-tenant-{% raw %}{{ user }}{% endraw %}"
+      namespace: {{ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace }}
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        name: ""
+        namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
+        server: 'https://kubernetes.default.svc'
+      project: default
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: false
+      source:
+        repoURL: {{ ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo }}
+        targetRevision: {{ ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_tag }}
+        path: {{ ocp4_workload_cloud_architecture_workshop_threescale_gitops_tenant_repo_path }}
+        helm:
+          values: |            
+            global:
+              openshift:
+                subdomain: {{ r_openshift_subdomain }}
+            nameOverride: "{{ ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base }}-{% raw %}{{ user }}{% endraw %}"
+            tenant:
+              adminId: "{% raw %}{{ user }}{% endraw %}"
+              adminPassword: {{ ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password | b64encode }}
+              email: 3scale-{% raw %}{{ user }}{% endraw %}@email.com
+              organizationName: "{{ ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base }}-{% raw %}{{ user }}{% endraw %}"
+            system:
+              masterDomain: {{ ocp4_workload_cloud_architecture_workshop_threescale_master_domain }}

@@ -18,8 +18,8 @@
 - name: Install Red Hat Keycloak Operator
   ansible.builtin.include_tasks: keycloak_operator.yml
 
-- name: Install 3scale and tenants
-  ansible.builtin.include_tasks: threescale.yml
+- name: Install 3scale with Gitops
+  ansible.builtin.include_tasks: threescale-gitops.yml
 
 - name: Install Devspaces
   ansible.builtin.include_tasks: devspaces.yml

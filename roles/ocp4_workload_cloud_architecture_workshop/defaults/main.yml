@@ -167,6 +167,13 @@ ocp4_workload_cloud_architecture_workshop_keycloak_operator_catalog_snapshot_ima
 # Threescale
 # ------------------------------------------------
 
+ocp4_workload_cloud_architecture_workshop_threescale_application_namespace: openshift-gitops
+
+ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo: https://github.com/btison/3scale-helm.git
+ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_tag: main
+ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_path: threescale/apimanager
+ocp4_workload_cloud_architecture_workshop_threescale_gitops_tenant_repo_path: threescale/tenant
+
 ocp4_workload_cloud_architecture_workshop_threescale_namespace: 3scale
 
 ocp4_workload_cloud_architecture_workshop_threescale_minio_stateful: true
@@ -175,30 +182,13 @@ ocp4_workload_cloud_architecture_workshop_threescale_minio_default_region: us-ea
 ocp4_workload_cloud_architecture_workshop_threescale_minio_access_key_id: minio
 ocp4_workload_cloud_architecture_workshop_threescale_minio_secret_access_key: minio123
 
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_host: ""
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_authentication: ""
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_domain: ""
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_passwd: ""
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_port: 0
-ocp4_workload_cloud_architecture_workshop_threescale_smtp_userid: ""
-
-ocp4_workload_cloud_architecture_workshop_threescale_create_system_seed_secret: true
 ocp4_workload_cloud_architecture_workshop_threescale_master_domain: 3scale-master
-ocp4_workload_cloud_architecture_workshop_threescale_tenant_name: 3scale
-ocp4_workload_cloud_architecture_workshop_threescale_admin_email: 3scale@email.com
-ocp4_workload_cloud_architecture_workshop_threescale_admin_userid: admin
-ocp4_workload_cloud_architecture_workshop_threescale_master_userid: master
-
-ocp4_workload_cloud_architecture_workshop_threescale_api_manager_name: 3scale-apimanager
-
-ocp4_workload_cloud_architecture_workshop_threescale_tenant_user_count: "{{ ocp4_workload_cloud_architecture_workshop_user_count }}"
-ocp4_workload_cloud_architecture_workshop_threescale_ocp_user_prefix: "{{ ocp4_workload_cloud_architecture_workshop_user_prefix }}"
-ocp4_workload_cloud_architecture_workshop_threescale_tenant_user_prefix: user
 
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_admin_email_user: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_admin_email_domain: email.com
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password: "r3dh4t1!"
+ocp4_workload_cloud_architecture_workshop_threescale_tenant_wait_for_master_route: true
 
 # ------------------------------------------------
 # Devspaces
