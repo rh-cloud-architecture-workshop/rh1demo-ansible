@@ -15,6 +15,9 @@
 - name: Install 3scale and tenants
   ansible.builtin.include_tasks: threescale.yml
 
+- name: Install Devspaces
+  ansible.builtin.include_tasks: devspaces.yml
+
 - name: Install Workshop
   ansible.builtin.include_tasks: workshop.yml
 
