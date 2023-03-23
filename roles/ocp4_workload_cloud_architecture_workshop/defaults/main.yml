@@ -2,9 +2,14 @@ become_override: false
 ocp_username: opentlc-mgr
 silent: false
 
+# OCP4 Authentication:
+ocp4_workload_authentication_htpasswd_user_password: openshift
+ocp4_workload_authentication_htpasswd_user_base: user
+ocp4_workload_authentication_htpasswd_user_count: 1
+
 # Shared Users
-ocp4_workload_cloud_architecture_workshop_user_count: 1
-ocp4_workload_cloud_architecture_workshop_user_prefix: user
+ocp4_workload_cloud_architecture_workshop_user_count: "{{ ocp4_workload_authentication_htpasswd_user_count }}"
+ocp4_workload_cloud_architecture_workshop_user_prefix: "{{ ocp4_workload_authentication_htpasswd_user_base }}"
 
 # ------------------------------------------------
 # AMQ Streams Operator
