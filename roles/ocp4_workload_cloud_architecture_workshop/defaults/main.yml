@@ -111,6 +111,19 @@ ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_imag
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_image_tag: v4.10_2022_07_18
 
 # ------------------------------------------------
+# Devspaces Operator
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_devspaces_channel: ""
+ocp4_workload_cloud_architecture_workshop_devspaces_automatic_install_plan_approval: true
+ocp4_workload_cloud_architecture_workshop_devspaces_starting_csv: ""
+ocp4_workload_cloud_architecture_workshop_devspaces_wait_for_deploy: true
+ocp4_workload_cloud_architecture_workshop_devspaces_use_catalog_snapshot: false
+ocp4_workload_cloud_architecture_workshop_devspaces_catalogsource_name: redhat-operators-snapshot-amq-streams
+ocp4_workload_cloud_architecture_workshop_devspaces_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_cloud_architecture_workshop_devspaces_catalog_snapshot_image_tag: "v4.6_2021_05_10"
+
+# ------------------------------------------------
 # Threescale Operator
 # ------------------------------------------------
 
