@@ -33,10 +33,14 @@ spec:
         path: {{ ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path }}
         helm:
           values: |
+            image:
+              pullPolicy: Always
+              tag: work
             bookbagVariables: >-
               {"openshift_cluster_console": "https://{{ r_console_route.resources[0].spec.host }}",
               "user_name": "{% raw %}{{ user }}{% endraw %}",
               "user_password": "{{ ocp4_workload_authentication_htpasswd_user_password }}",
               "globex_web_url": "https://globex-web-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-{% raw %}{{ user }}{% endraw %}.{{ r_openshift_subdomain }}",
-              "kafdrop_url": "https://kafdrop-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-mw-{% raw %}{{ user }}{% endraw %}.{{ r_openshift_subdomain }}"
-              "activity_tracking_simulator_url": "https://activity-tracking-simulator-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-{% raw %}{{ user }}{% endraw %}.{{ r_openshift_subdomain }}"}
+              "kafdrop_url": "https://kafdrop-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-mw-{% raw %}{{ user }}{% endraw %}.{{ r_openshift_subdomain }}",
+              "activity_tracking_simulator_url": "https://activity-tracking-simulator-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-{% raw %}{{ user }}{% endraw %}.{{ r_openshift_subdomain }}",
+              "devspaces_dashboard":"https://devspaces.{{ r_openshift_subdomain }}"}
