@@ -140,15 +140,15 @@ ocp4_workload_cloud_architecture_workshop_threescale_operator_catalog_snapshot_i
 # Red Hat SSO Streams Operator
 # ------------------------------------------------
 
-ocp4_workload_cloud_architecture_workshop_rhsso_namespace: rhsso
-ocp4_workload_cloud_architecture_workshop_rhsso_channel: ""
-ocp4_workload_cloud_architecture_workshop_rhsso_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_rhsso_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_rhsso_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_rhsso_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_rhsso_catalogsource_name: redhat-operators-snapshot-amq-streams
-ocp4_workload_cloud_architecture_workshop_rhsso_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_cloud_architecture_workshop_rhsso_catalog_snapshot_image_tag: "v4.6_2021_05_10"
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_namespace: rhsso
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_channel: ""
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_automatic_install_plan_approval: true
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_starting_csv: ""
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_wait_for_deploy: true
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_use_catalog_snapshot: false
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+ocp4_workload_cloud_architecture_workshop_rhsso_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
 
 # ------------------------------------------------
 # Threescale
@@ -199,6 +199,16 @@ ocp4_workload_cloud_architecture_workshop_devspaces_template_name: che-code-work
 ocp4_workload_cloud_architecture_workshop_devspaces_devworkspace_name: cloud-architecture-workshop
 ocp4_workload_cloud_architecture_workshop_devspaces_project_git: https://github.com/rh-cloud-architecture-workshop/workshop-devspaces.git
 ocp4_workload_cloud_architecture_workshop_devspaces_project_name: workshop-devspaces
+
+# ------------------------------------------------
+# Red Hat SSO
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_rhsso_namespace: "{{ ocp4_workload_cloud_architecture_workshop_rhsso_operator_namespace }}"
+ocp4_workload_cloud_architecture_workshop_rhsso_name: rhsso
+ocp4_workload_cloud_architecture_workshop_rhsso_external_access: false
+ocp4_workload_cloud_architecture_workshop_rhsso_route: rhsso
+ocp4_workload_cloud_architecture_workshop_rhsso_host: sso
 
 # ------------------------------------------------
 # Workshop

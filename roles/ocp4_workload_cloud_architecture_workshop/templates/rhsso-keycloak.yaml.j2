@@ -1,0 +1,14 @@
+---
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  name: {{ ocp4_workload_cloud_architecture_workshop_rhsso_name }}
+  labels:
+    app: rhsso
+spec:
+  instances: 1
+  extensions:
+    - https://github.com/aerogear/keycloak-metrics-spi/releases/download/2.5.3/keycloak-metrics-spi-2.5.3.jar
+  externalAccess:
+    enabled: {{ ocp4_workload_cloud_architecture_workshop_rhsso_external_access }}
+  disableDefaultServiceMonitor: true
