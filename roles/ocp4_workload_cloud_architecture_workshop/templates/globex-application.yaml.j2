@@ -55,6 +55,13 @@ spec:
           pgsql:
             adminPassword: adminpassword
           image:
-            tag: 8f660f2
+            tag: 43e87ee
+
+        globex-web:
+          sso:
+            url: "https://{{ ocp4_workload_cloud_architecture_workshop_keycloak_host }}.{{ r_openshift_subdomain }}/realms/{{ ocp4_workload_cloud_architecture_workshop_keycloak_realm_prefix }}{{ __user }}"
+            client: {{ ocp4_workload_cloud_architecture_workshop_keycloak_web_gateway_client }}
+            logoutUri: https://globex-web-{{ r_cloud_architecture_workshop_globex_namespace | replace("user",__user) }}.{{ r_openshift_subdomain }}/home
+            logLevel: "2"        
 
 {% endfor %}
