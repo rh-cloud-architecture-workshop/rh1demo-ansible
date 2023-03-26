@@ -1,0 +1,23 @@
+kind: Keycloak
+apiVersion: k8s.keycloak.org/v2alpha1
+metadata:
+  name: {{ ocp4_workload_cloud_architecture_workshop_keycloak_name }}
+  labels:
+    app: sso
+spec:
+  db:
+    vendor: postgres
+    host: {{ ocp4_workload_cloud_architecture_workshop_keycloak_pgsql }}
+    usernameSecret:
+      name: {{ ocp4_workload_cloud_architecture_workshop_keycloak_pgsql }}
+      key: database-user
+    passwordSecret:
+      name: {{ ocp4_workload_cloud_architecture_workshop_keycloak_pgsql }}
+      key: database-password
+  instances: 1
+  ingress: 
+    enabled: false
+  http:
+    httpEnabled: true
+  hostname:
+    hostname: {{ ocp4_workload_cloud_architecture_workshop_keycloak_host }}.{{ r_openshift_subdomain }}

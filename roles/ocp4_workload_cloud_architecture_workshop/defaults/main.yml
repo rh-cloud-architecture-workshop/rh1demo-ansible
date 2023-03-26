@@ -201,14 +201,21 @@ ocp4_workload_cloud_architecture_workshop_devspaces_project_git: https://github.
 ocp4_workload_cloud_architecture_workshop_devspaces_project_name: workshop-devspaces
 
 # ------------------------------------------------
-# Red Hat SSO
+# Keycloak
 # ------------------------------------------------
 
-ocp4_workload_cloud_architecture_workshop_rhsso_namespace: "{{ ocp4_workload_cloud_architecture_workshop_rhsso_operator_namespace }}"
-ocp4_workload_cloud_architecture_workshop_rhsso_name: rhsso
-ocp4_workload_cloud_architecture_workshop_rhsso_external_access: false
-ocp4_workload_cloud_architecture_workshop_rhsso_route: rhsso
-ocp4_workload_cloud_architecture_workshop_rhsso_host: sso
+ocp4_workload_cloud_architecture_workshop_keycloak_namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_operator_namespace }}"
+ocp4_workload_cloud_architecture_workshop_keycloak_name: keycloak
+
+ocp4_workload_cloud_architecture_workshop_keycloak_external_access: false
+ocp4_workload_cloud_architecture_workshop_keycloak_route: keycloak
+ocp4_workload_cloud_architecture_workshop_keycloak_host: sso
+
+ocp4_workload_cloud_architecture_workshop_keycloak_pgsql: keycloak-db
+ocp4_workload_cloud_architecture_workshop_keycloak_pgsql_storage: 1Gi
+
+ocp4_workload_cloud_architecture_workshop_keycloak_realm_prefix: globex-
+ocp4_workload_cloud_architecture_workshop_keycloak_web_gateway_client: globex-web-gateway
 
 # ------------------------------------------------
 # Workshop

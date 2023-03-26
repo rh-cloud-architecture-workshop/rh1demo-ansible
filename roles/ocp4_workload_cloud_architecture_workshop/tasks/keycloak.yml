@@ -1,0 +1,79 @@
+---
+
+- name: "Ensure namespace exists"
+  kubernetes.core.k8s:
+    state: present
+    api_version: v1
+    kind: Namespace
+    name: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+
+- name: Deploy Postgres database for Keycloak
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    definition: "{{ lookup('template', 'keycloak-postgresql.yaml.j2') }}"
+
+- name: Wait until Postgres database is up and running
+  kubernetes.core.k8s_info:
+    api_version: apps/v1
+    kind: deployment
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    name: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_pgsql }}"
+  register: r_keycloak_pgsql_deployment
+  retries: 60
+  delay: 10
+  changed_when: false
+  until:
+    - r_keycloak_pgsql_deployment.resources is defined
+    - r_keycloak_pgsql_deployment.resources | length | int > 0
+    - r_keycloak_pgsql_deployment.resources[0].status.readyReplicas is defined
+    - r_keycloak_pgsql_deployment.resources[0].status.replicas is defined
+    - r_keycloak_pgsql_deployment.resources[0].status.readyReplicas == r_keycloak_pgsql_deployment.resources[0].status.replicas
+
+- name: Deploy Keycloak CR
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    definition: "{{ lookup('template', 'keycloak.yaml.j2') }}"
+
+- name: Deploy route for Keycloak
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    definition: "{{ lookup('template', 'keycloak-route.yaml.j2') }}"
+
+- name: Wait for keycloak to be ready
+  kubernetes.core.k8s_info:
+    api_version: apps/v1
+    kind: statefulset
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    label_selectors:
+      - app = keycloak
+  register: r_keycloak_statefulset
+  retries: 60
+  delay: 10
+  changed_when: false
+  until:
+    - r_keycloak_statefulset.resources is defined
+    - r_keycloak_statefulset.resources | length | int > 0
+    - r_keycloak_statefulset.resources[0].status.readyReplicas is defined
+    - r_keycloak_statefulset.resources[0].status.replicas is defined
+    - r_keycloak_statefulset.resources[0].status.readyReplicas == r_keycloak_statefulset.resources[0].status.replicas
+
+- name: Set facts for realm import
+  ansible.builtin.set_fact:
+    r_keycloak_container_id_client_realm_management: |
+       {{ r_keycloak_container_id_client_realm_management | default([]) + [lookup('password', '/dev/null chars=ascii_letters,15') | to_uuid] }}
+    r_keycloak_container_id_globex_web_gateway: |
+       {{ r_keycloak_container_id_globex_web_gateway | default([]) + [lookup('password', '/dev/null chars=ascii_letters,15') | to_uuid] }}
+    r_keycloak_container_id_client_broker: |
+       {{ r_keycloak_container_id_client_broker | default([]) + [lookup('password', '/dev/null chars=ascii_letters,15') | to_uuid] }}
+    r_keycloak_container_id_account: |
+       {{ r_keycloak_container_id_account | default([]) + [lookup('password', '/dev/null chars=ascii_letters,15') | to_uuid] }}
+  loop: "{{ range(1, ((ocp4_workload_cloud_architecture_workshop_user_count | int) + 1)) | list }}"
+
+- name: Deploy Keycloak Realmimport CR
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_keycloak_namespace }}"
+    definition: "{{ lookup('template', 'keycloak-realmimport.yaml.j2') }}"
