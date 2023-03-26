@@ -518,7 +518,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "FjwQOBKXdrVHPQvf7HgELjXjYKNeaoTX"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris:
       - "/realms/{{ ocp4_workload_cloud_architecture_workshop_keycloak_realm_prefix }}{{ocp4_workload_cloud_architecture_workshop_user_prefix}}{{ n }}/account/*"
       webOrigins: []
@@ -599,7 +599,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "QOBKXdrVHPQvf7HgELjXjYKNeaoTXFjw"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris: []
       webOrigins: []
       notBefore: 0
@@ -634,7 +634,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "RjWky1qH6D4HttpYOC7Wp7u9I49ksPgw"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris: []
       webOrigins: []
       notBefore: 0
@@ -668,7 +668,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "22lR0KdWqTr7zqobQ6CziLioiEJ2GJJY"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris:
       - "*"
       webOrigins:
@@ -770,7 +770,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "pAWGiXKvYKdj7epCalQhJkvGCpmTSaPb"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris: []
       webOrigins: []
       notBefore: 0
@@ -807,7 +807,7 @@ spec:
       enabled: true
       alwaysDisplayInConsole: false
       clientAuthenticatorType: client-secret
-      secret: "iXKvYKdj7epCalQhJkvGCpmTSaPbpAWG"
+      secret: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
       redirectUris:
       - "/admin/{{ ocp4_workload_cloud_architecture_workshop_keycloak_realm_prefix }}{{ocp4_workload_cloud_architecture_workshop_user_prefix}}{{ n }}/console/*"
       webOrigins:
