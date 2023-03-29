@@ -253,6 +253,8 @@ ocp4_workload_cloud_architecture_workshop_kafka_sasl_mechanism: SCRAM-SHA-512
 ocp4_workload_cloud_architecture_workshop_kafka_client_id: globex
 ocp4_workload_cloud_architecture_workshop_kafka_client_secret: globex
 
+ocp4_workload_cloud_architecture_workshop_globex_user_password: openshift
+
 # ------------------------------------------------
 # Workshop Bookbag
 # ------------------------------------------------
