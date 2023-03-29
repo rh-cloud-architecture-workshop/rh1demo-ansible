@@ -6,6 +6,9 @@
 - name: Install OpenShift Gitops
   ansible.builtin.include_tasks: openshift_gitops.yml
 
+- name: Install CamelK Operator
+  ansible.builtin.include_tasks: camelk_operator.yml
+
 - name: Install 3scale Operator
   ansible.builtin.include_tasks: threescale_operator.yml
 
