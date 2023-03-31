@@ -24,8 +24,8 @@
 - name: Install Devspaces
   ansible.builtin.include_tasks: devspaces.yml
 
-- name: Install Keycloak
-  ansible.builtin.include_tasks: keycloak.yml
+- name: Install SSO
+  ansible.builtin.include_tasks: rhsso.yml
 
 - name: Install Workshop
   ansible.builtin.include_tasks: workshop.yml
