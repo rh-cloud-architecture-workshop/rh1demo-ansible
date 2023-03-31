@@ -15,8 +15,8 @@
 - name: Install Dev Spaces operator
   ansible.builtin.include_tasks: devspaces_operator.yml
 
-- name: Install Red Hat Keycloak Operator
-  ansible.builtin.include_tasks: keycloak_operator.yml
+- name: Install Red Hat SSO Operator
+  ansible.builtin.include_tasks: rhsso_operator.yml
 
 - name: Install 3scale with Gitops
   ansible.builtin.include_tasks: threescale-gitops.yml
