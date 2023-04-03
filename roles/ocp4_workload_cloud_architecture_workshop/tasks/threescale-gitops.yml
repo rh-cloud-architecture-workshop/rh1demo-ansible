@@ -56,7 +56,7 @@
     - r_master_domain_route is defined
     - r_master_domain_route.resources | list | length > 0
 
-- name: Deploy tenant applicationset
+- name: Deploy tenant application
   kubernetes.core.k8s:
     state: present
-    definition: "{{ lookup('template', 'threescale-tenant-applicationset.yaml.j2') | from_yaml }}"
+    definition: "{{ lookup('template', 'threescale-tenant-application.yaml.j2') | from_yaml }}"

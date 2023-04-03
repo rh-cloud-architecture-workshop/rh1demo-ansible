@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: threescale
+  name: {{ ocp4_workload_cloud_architecture_workshop_threescale_apimanager_application_name }}
   namespace: {{ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io/foreground
