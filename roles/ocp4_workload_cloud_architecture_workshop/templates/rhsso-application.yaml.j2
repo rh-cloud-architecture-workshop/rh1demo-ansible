@@ -37,5 +37,12 @@ spec:
             prefix: {{ ocp4_workload_cloud_architecture_workshop_user_prefix }}
             count: {{ ocp4_workload_cloud_architecture_workshop_user_count }}
 
-        hook:
-          maxTimeToWait: 300000
+          selector:
+            app: {{ ocp4_workload_cloud_architecture_workshop_rhsso_cr_name }}
+
+          hook:
+            maxTimeToWait: {{ ocp4_workload_cloud_architecture_workshop_rhsso_max_time_to_wait }}
+
+        rhsso-db:
+          selector:
+            app: {{ ocp4_workload_cloud_architecture_workshop_rhsso_cr_name }}

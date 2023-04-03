@@ -218,6 +218,7 @@ ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo_path: globex-rhsso
 ocp4_workload_cloud_architecture_workshop_rhsso_cr_name: rhsso
 ocp4_workload_cloud_architecture_workshop_rhsso_external_access: false
 ocp4_workload_cloud_architecture_workshop_rhsso_host: sso
+ocp4_workload_cloud_architecture_workshop_rhsso_max_time_to_wait: 600000
 
 # ------------------------------------------------
 # Workshop
