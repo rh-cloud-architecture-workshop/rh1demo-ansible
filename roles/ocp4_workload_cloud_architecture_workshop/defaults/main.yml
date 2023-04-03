@@ -150,7 +150,7 @@ ocp4_workload_cloud_architecture_workshop_threescale_operator_catalog_snapshot_i
 ocp4_workload_cloud_architecture_workshop_threescale_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
 
 # ------------------------------------------------
-# Red Hat SSO Streams Operator
+# Red Hat SSO Operator
 # ------------------------------------------------
 
 ocp4_workload_cloud_architecture_workshop_rhsso_operator_namespace: rhsso
@@ -211,8 +211,8 @@ ocp4_workload_cloud_architecture_workshop_devspaces_project_name: workshop-devsp
 ocp4_workload_cloud_architecture_workshop_rhsso_application_namespace: openshift-gitops
 ocp4_workload_cloud_architecture_workshop_rhsso_application_name: rhsso
 ocp4_workload_cloud_architecture_workshop_rhsso_namespace: "{{ ocp4_workload_cloud_architecture_workshop_rhsso_operator_namespace }}"
-ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
-ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo_tag: globex-sso
+ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
+ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo_tag: main
 ocp4_workload_cloud_architecture_workshop_rhsso_gitops_repo_path: globex-rhsso
 
 ocp4_workload_cloud_architecture_workshop_rhsso_cr_name: rhsso
