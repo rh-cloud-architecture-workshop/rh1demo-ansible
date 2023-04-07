@@ -171,13 +171,11 @@ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace: open
 
 ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
 ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_path: globex-threescale/apimanager
-ocp4_workload_cloud_architecture_workshop_threescale_gitops_tenant_repo_path: globex-threescale/tenant
+ocp4_workload_cloud_architecture_workshop_threescale_gitops_repo_path: globex-threescale
 
 ocp4_workload_cloud_architecture_workshop_threescale_namespace: 3scale
 
-ocp4_workload_cloud_architecture_workshop_threescale_apimanager_application_name: threescale-apimanager
-ocp4_workload_cloud_architecture_workshop_threescale_tenant_application_name: threescale-tenant
+ocp4_workload_cloud_architecture_workshop_threescale_apimanager_application_name: threescale
 
 ocp4_workload_cloud_architecture_workshop_threescale_minio_stateful: true
 ocp4_workload_cloud_architecture_workshop_threescale_minio_storageclass: gp3-csi
@@ -189,7 +187,6 @@ ocp4_workload_cloud_architecture_workshop_threescale_master_domain: 3scale-maste
 
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password: "openshift"
-ocp4_workload_cloud_architecture_workshop_threescale_tenant_wait_for_master_route: true
 
 # ------------------------------------------------
 # Devspaces

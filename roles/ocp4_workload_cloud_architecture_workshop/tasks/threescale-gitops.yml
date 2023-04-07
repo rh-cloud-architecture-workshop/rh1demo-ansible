@@ -38,25 +38,3 @@
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('template', 'threescale-application.yaml.j2') | from_yaml }}"
-
-- name: Wait until the master route is available
-  kubernetes.core.k8s_info:
-    api_version: route.openshift.io/v1
-    kind: route
-    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_namespace }}"
-    field_selectors:
-      - "spec.host={{ ocp4_workload_cloud_architecture_workshop_threescale_master_domain }}.{{ r_openshift_subdomain }}"
-  when:
-    - ocp4_workload_cloud_architecture_workshop_threescale_tenant_wait_for_master_route is defined
-    - ocp4_workload_cloud_architecture_workshop_threescale_tenant_wait_for_master_route | bool
-  retries: 60
-  delay: 15
-  register: r_master_domain_route
-  until:
-    - r_master_domain_route is defined
-    - r_master_domain_route.resources | list | length > 0
-
-- name: Deploy tenant application
-  kubernetes.core.k8s:
-    state: present
-    definition: "{{ lookup('template', 'threescale-tenant-application.yaml.j2') | from_yaml }}"
