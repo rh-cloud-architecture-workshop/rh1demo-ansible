@@ -57,7 +57,7 @@
 - name: Deploy Globex application
   kubernetes.core.k8s:
     state: present
-    definition: "{{ lookup('template', 'globex-application.yaml.j2') | from_yaml }}"
+    definition: "{{ lookup('template', 'globex-application.yaml.j2') }}"
   vars:
     r_cloud_architecture_workshop_argo_namespace: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-gitops-user"
     r_cloud_architecture_workshop_globex_namespace: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-user"
