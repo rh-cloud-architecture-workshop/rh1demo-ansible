@@ -1,0 +1,12 @@
+---
+
+- name: Install Workshop Modules
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  run_once: true
+
+  tasks:
+    - name: "Install workshop modules"
+      ansible.builtin.include_role:
+        name: workshop_modules

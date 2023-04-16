@@ -1,0 +1,35 @@
+{% for __user in r_cloud_architecture_workshop_users %}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: globex-camel
+  namespace: globex-gitops-{{ __user }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/foreground
+spec:
+  destination:
+    name: ""
+    namespace: globex-camel-{{ __user }}
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: https://github.com/btison/cloud-architecture-workshop-helm.git
+    targetRevision: globex-camel
+    path: globex-camel
+    helm:
+      values: |
+
+        minio:
+          accessKey: minio
+          secretKey: minio123
+          region: us-east-1
+
+        kafka:
+          kafka:
+            namespace: globex-mw-{{ __user }}
+{% endfor %}

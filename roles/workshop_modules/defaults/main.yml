@@ -1,0 +1,15 @@
+silent: false
+
+# OCP4 Authentication:
+ocp4_workload_authentication_htpasswd_user_password: openshift
+ocp4_workload_authentication_htpasswd_user_base: user
+ocp4_workload_authentication_htpasswd_user_count: 1
+
+# Shared Users
+ocp4_workload_cloud_architecture_workshop_user_count: "{{ ocp4_workload_authentication_htpasswd_user_count }}"
+ocp4_workload_cloud_architecture_workshop_user_prefix: "{{ ocp4_workload_authentication_htpasswd_user_base }}"
+
+# modules
+module_cdc: false
+module_camel: false
+module_apim: false

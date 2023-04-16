@@ -1,0 +1,6 @@
+---
+
+- name: Deploy ArgoCD application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', r_argocd_application_template) }}"

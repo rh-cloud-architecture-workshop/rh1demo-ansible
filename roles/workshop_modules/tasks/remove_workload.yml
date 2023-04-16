@@ -1,0 +1,22 @@
+---
+
+- name: Remove globex-cdc-module
+  ansible.builtin.include_tasks: remove_module.yml
+  when:
+    - module_cdc | bool
+  vars:
+    r_argocd_application_template: globex-cdc.yaml.j2
+
+- name: Remove globex-camel-module
+  ansible.builtin.include_tasks: remove_module.yml
+  when:
+    - module_camel | bool
+  vars:
+    r_argocd_application_template: globex-camel.yaml.j2
+
+- name: Remove globex-apim-module
+  ansible.builtin.include_tasks: remove_module.yml
+  when:
+    - module_apim | bool
+  vars:
+    r_argocd_application_template: globex-apim.yaml.j2
