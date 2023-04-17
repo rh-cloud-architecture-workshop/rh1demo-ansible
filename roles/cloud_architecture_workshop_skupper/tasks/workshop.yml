@@ -19,3 +19,8 @@
         role: "admin"
   retries: 10
   delay: 30
+
+- name: Deploy applicationset
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'applicationset.yaml.j2') | from_yaml }}"

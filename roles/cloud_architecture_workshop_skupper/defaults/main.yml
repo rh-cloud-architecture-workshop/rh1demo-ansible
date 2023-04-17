@@ -142,3 +142,14 @@ cloud_architecture_workshop_skupper_webterminal_tooling_image: quay.io/cloud-arc
 # ------------------------------------------------
 
 cloud_architecture_workshop_skupper_namespace_prefix: globex
+
+cloud_architecture_workshop_skupper_applicationset_name: globex-database
+cloud_architecture_workshop_skupper_applicationset_namespace: openshift-gitops
+
+cloud_architecture_workshop_skupper_application_name: globex-database
+
+cloud_architecture_workshop_skupper_application_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
+cloud_architecture_workshop_skupper_application_repo_tag: main
+cloud_architecture_workshop_skupper_application_repo_path: globex/globex-db
+
+cloud_architecture_workshop_skupper_globex_user_password: openshift
