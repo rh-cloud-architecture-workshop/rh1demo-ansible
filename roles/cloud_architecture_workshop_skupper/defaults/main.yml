@@ -50,3 +50,9 @@ cloud_architecture_workshop_skupper_webterminal_operator_catalog_snapshot_image_
 # ------------------------------------------------
 
 cloud_architecture_workshop_skupper_webterminal_tooling_image: quay.io/cloud-architecture-workshop/web-terminal-tooling:skupper
+
+# ------------------------------------------------
+# Workshop
+# ------------------------------------------------
+
+cloud_architecture_workshop_skupper_namespace_prefix: globex

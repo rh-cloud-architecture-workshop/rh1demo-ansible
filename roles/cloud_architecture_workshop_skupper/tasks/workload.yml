@@ -8,3 +8,6 @@
 
 - name: Patch Web Terminal template
   ansible.builtin.include_tasks: webterminal_image.yml
+
+- name: Deploy workshop
+  ansible.builtin.include_tasks: workshop.yml
