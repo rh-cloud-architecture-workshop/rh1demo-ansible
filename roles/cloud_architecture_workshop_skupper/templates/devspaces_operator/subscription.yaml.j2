@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {{ cloud_architecture_workshop_skupper_devspaces_operator_name }}
+spec:
+  channel: "{{ cloud_architecture_workshop_skupper_devspaces_operator_channel }}"
+  installPlanApproval: Automatic
+  name: {{ cloud_architecture_workshop_skupper_devspaces_operator_name }}
+  source: {{ cloud_architecture_workshop_skupper_devspaces_operator_catalog_source }}
+  sourceNamespace: openshift-marketplace
+  startingCSV: {{ cloud_architecture_workshop_skupper_devspaces_operator_starting_csv }}

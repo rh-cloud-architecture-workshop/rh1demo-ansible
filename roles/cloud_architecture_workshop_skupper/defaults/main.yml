@@ -1,0 +1,46 @@
+become_override: false
+ocp_username: opentlc-mgr
+silent: false
+
+# OCP4 Authentication:
+ocp4_workload_authentication_htpasswd_user_password: openshift
+ocp4_workload_authentication_htpasswd_user_base: user
+ocp4_workload_authentication_htpasswd_user_count: 1
+
+# Shared Users
+cloud_architecture_workshop_skupper_user_count: "{{ ocp4_workload_authentication_htpasswd_user_count }}"
+cloud_architecture_workshop_skupper_user_prefix: "{{ ocp4_workload_authentication_htpasswd_user_base }}"
+
+# ------------------------------------------------
+# Devspaces Operator
+# ------------------------------------------------
+
+cloud_architecture_workshop_skupper_devspaces_operator_channel: ""
+cloud_architecture_workshop_skupper_devspaces_operator_starting_csv: ""
+cloud_architecture_workshop_skupper_devspaces_operator_wait_for_deploy: true
+cloud_architecture_workshop_skupper_devspaces_operator_name: devspaces
+cloud_architecture_workshop_skupper_devspaces_operator_catalog_source: redhat-operators
+cloud_architecture_workshop_skupper_devspaces_operator_deployment: devspaces-operator
+cloud_architecture_workshop_skupper_devspaces_operator_namespace: openshift-operators
+cloud_architecture_workshop_skupper_devspaces_operator_use_catalog_snapshot: false
+cloud_architecture_workshop_skupper_devspaces_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
+cloud_architecture_workshop_skupper_devspaces_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+cloud_architecture_workshop_skupper_devspaces_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
+
+# ------------------------------------------------
+# Web Terminal Operator
+# ------------------------------------------------
+
+cloud_architecture_workshop_skupper_webterminal_operator_channel: "fast"
+cloud_architecture_workshop_skupper_webterminal_operator_automatic_install_plan_approval: true
+cloud_architecture_workshop_skupper_webterminal_operator_starting_csv: ""
+cloud_architecture_workshop_skupper_webterminal_operator_wait_for_deploy: true
+cloud_architecture_workshop_skupper_webterminal_operator_name: web-terminal
+cloud_architecture_workshop_skupper_webterminal_operator_csv_prefix: web-terminal
+cloud_architecture_workshop_skupper_webterminal_operator_catalog_source: redhat-operators
+cloud_architecture_workshop_skupper_webterminal_operator_deployment: web-terminal-controller
+cloud_architecture_workshop_skupper_webterminal_operator_namespace: openshift-operators
+cloud_architecture_workshop_skupper_webterminal_operator_use_catalog_snapshot: false
+cloud_architecture_workshop_skupper_webterminal_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
+cloud_architecture_workshop_skupper_webterminal_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+cloud_architecture_workshop_skupper_webterminal_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"

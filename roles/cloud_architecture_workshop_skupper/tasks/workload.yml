@@ -1,0 +1,7 @@
+---
+
+- name: Install Dev Spaces operator
+  ansible.builtin.include_tasks: devspaces_operator.yml
+
+- name: Install Web Terminal operator
+  ansible.builtin.include_tasks: webterminal_operator.yml
