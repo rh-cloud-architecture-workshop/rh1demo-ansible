@@ -44,3 +44,9 @@ cloud_architecture_workshop_skupper_webterminal_operator_use_catalog_snapshot: f
 cloud_architecture_workshop_skupper_webterminal_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
 cloud_architecture_workshop_skupper_webterminal_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
 cloud_architecture_workshop_skupper_webterminal_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
+
+# ------------------------------------------------
+# Web terminal tooling image
+# ------------------------------------------------
+
+cloud_architecture_workshop_skupper_webterminal_tooling_image: quay.io/cloud-architecture-workshop/web-terminal-tooling:skupper

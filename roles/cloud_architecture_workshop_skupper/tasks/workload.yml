@@ -5,3 +5,6 @@
 
 - name: Install Web Terminal operator
   ansible.builtin.include_tasks: webterminal_operator.yml
+
+- name: Patch Web Terminal template
+  ansible.builtin.include_tasks: webterminal_image.yml
