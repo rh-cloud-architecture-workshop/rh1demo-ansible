@@ -26,13 +26,9 @@ spec:
         globex-partner-gateway:
           globexStoreApp:
             url: http://globex-store-app.globex-{{ __user }}.svc.cluster.local:8080
-          image:
-            tag: work
         globex-mobile-gateway:
           globexStoreApp:
             url: http://globex-store-app.globex-{{ __user }}.svc.cluster.local:8080
           keycloak:
-            authserver: https://sso.{{ r_openshift_subdomain }}/auth/realms/globex-{{ __user }}
-          image:
-            tag: work        
+            authserver: https://sso.{{ r_openshift_subdomain }}/auth/realms/globex-{{ __user }}       
 {% endfor %}
