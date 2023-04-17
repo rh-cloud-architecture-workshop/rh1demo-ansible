@@ -28,6 +28,92 @@ cloud_architecture_workshop_skupper_devspaces_operator_catalog_snapshot_image: q
 cloud_architecture_workshop_skupper_devspaces_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
 
 # ------------------------------------------------
+# OpenShift Gitops
+# ------------------------------------------------
+
+cloud_architecture_workshop_skupper_openshift_gitops_channel: stable
+cloud_architecture_workshop_skupper_openshift_gitops_automatic_install_plan_approval: true
+cloud_architecture_workshop_skupper_openshift_gitops_starting_csv: ""
+cloud_architecture_workshop_skupper_openshift_gitops_pipelines_csv_prefix: openshift-pipelines-operator-rh
+
+cloud_architecture_workshop_skupper_openshift_gitops_setup_cluster_admin: true
+
+cloud_architecture_workshop_skupper_openshift_gitops_update_route_tls: false
+
+cloud_architecture_workshop_skupper_openshift_gitops_update_resources: false
+
+# ApplicationSet Controller
+cloud_architecture_workshop_skupper_openshift_gitops_applicationset_controller_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_applicationset_controller_requests_cpu: 250m
+cloud_architecture_workshop_skupper_openshift_gitops_applicationset_controller_requests_memory: 512Mi
+cloud_architecture_workshop_skupper_openshift_gitops_applicationset_controller_limits_cpu: "2"
+cloud_architecture_workshop_skupper_openshift_gitops_applicationset_controller_limits_memory: 1Gi
+
+# Application Controller
+cloud_architecture_workshop_skupper_openshift_gitops_controller_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_controller_requests_cpu: 250m
+cloud_architecture_workshop_skupper_openshift_gitops_controller_requests_memory: 1Gi
+cloud_architecture_workshop_skupper_openshift_gitops_controller_limits_cpu: "2"
+cloud_architecture_workshop_skupper_openshift_gitops_controller_limits_memory: 2Gi
+# Setting a default value for reconcile timeout as it needs to be configurable
+# Reduce this value if you want to sync more frequently
+cloud_architecture_workshop_skupper_openshift_gitops_controller_app_sync: 3m
+
+# Redis
+cloud_architecture_workshop_skupper_openshift_gitops_redis_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_redis_requests_cpu: 250m
+cloud_architecture_workshop_skupper_openshift_gitops_redis_requests_memory: 128Mi
+cloud_architecture_workshop_skupper_openshift_gitops_redis_limits_cpu: 500m
+cloud_architecture_workshop_skupper_openshift_gitops_redis_limits_memory: 256Mi
+
+# Repo Server
+cloud_architecture_workshop_skupper_openshift_gitops_repo_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_repo_requests_cpu: 250m
+cloud_architecture_workshop_skupper_openshift_gitops_repo_requests_memory: 256Mi
+cloud_architecture_workshop_skupper_openshift_gitops_repo_limits_cpu: "1"
+cloud_architecture_workshop_skupper_openshift_gitops_repo_limits_memory: 1Gi
+
+# DEX
+cloud_architecture_workshop_skupper_openshift_gitops_dex_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_dex_requests_cpu: 125m
+cloud_architecture_workshop_skupper_openshift_gitops_dex_requests_memory: 128Mi
+cloud_architecture_workshop_skupper_openshift_gitops_dex_limits_cpu: 500m
+cloud_architecture_workshop_skupper_openshift_gitops_dex_limits_memory: 256Mi
+
+# Server
+cloud_architecture_workshop_skupper_openshift_gitops_server_update: false
+cloud_architecture_workshop_skupper_openshift_gitops_server_requests_cpu: 250m
+cloud_architecture_workshop_skupper_openshift_gitops_server_requests_memory: 128Mi
+cloud_architecture_workshop_skupper_openshift_gitops_server_limits_cpu: 500m
+cloud_architecture_workshop_skupper_openshift_gitops_server_limits_memory: 256Mi
+
+cloud_architecture_workshop_skupper_openshift_gitops_resource_customizations: ""
+# e.g.
+# openshift_gitops_resource_customizations: |
+  # argoproj.io/Application:
+  #   health.lua: |
+  #     hs = {}
+  #     hs.status = "Progressing"
+  #     hs.message = ""
+  #     if obj.status ~= nil then
+  #       if obj.status.health ~= nil then
+  #         hs.status = obj.status.health.status
+  #         hs.message = obj.status.health.message
+  #       end
+  #     end
+  #     return hs
+# --------------------------------
+# Operator Catalog Snapshot Settings
+# --------------------------------
+# See https://github.com/redhat-cop/agnosticd/blob/development/docs/Operator_Catalog_Snapshots.adoc
+# for instructions on how to set up catalog snapshot images
+
+cloud_architecture_workshop_skupper_openshift_gitops_use_catalog_snapshot: false
+cloud_architecture_workshop_skupper_openshift_gitops_catalogsource_name: redhat-operators-snapshot-gitops
+cloud_architecture_workshop_skupper_openshift_gitops_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+cloud_architecture_workshop_skupper_openshift_gitops_catalog_snapshot_image_tag: v4.10_2022_07_18
+
+# ------------------------------------------------
 # Web Terminal Operator
 # ------------------------------------------------
 

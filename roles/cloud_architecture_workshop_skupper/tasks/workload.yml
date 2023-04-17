@@ -9,5 +9,8 @@
 - name: Patch Web Terminal template
   ansible.builtin.include_tasks: webterminal_image.yml
 
+- name: Install OpenShift Gitops
+  ansible.builtin.include_tasks: openshift_gitops.yml
+
 - name: Deploy workshop
   ansible.builtin.include_tasks: workshop.yml
