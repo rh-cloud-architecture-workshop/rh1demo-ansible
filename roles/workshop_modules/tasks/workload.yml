@@ -20,3 +20,10 @@
     - module_apim | bool
   vars:
     r_argocd_application_template: globex-apim.yaml.j2
+
+- name: Install globex-skupper-module
+  ansible.builtin.include_tasks: deploy_module.yml
+  when:
+    - module_skupper | bool
+  vars:
+    r_argocd_application_template: globex-skupper.yaml.j2
