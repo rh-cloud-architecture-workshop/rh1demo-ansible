@@ -36,4 +36,19 @@ spec:
         amq-broker:
           amq:
             namespace: camel-common
+
+        globex-web:
+          globexStoreApp:
+            url: http://globex-store-app.globex-{{ __user }}:8080
+          activityTrackingService:
+            url: http://activity-tracking.globex-{{ __user }}:8080
+          recommendationEngine:
+            url: http://recommendation-engine.globex-{{ __user }}:8080
+          globexSupportUrl:
+            url: http://recommendation-engine.globex-{{ __user }}:8080
+
+          sso:
+            url: "https://sso.{{ r_openshift_subdomain }}/auth/realms/globex-{{ __user }}"
+            client: globex-web-gateway
+            logoutUri: https://globex-web-globex-camel-{{ __user }}.{{ r_openshift_subdomain }}/home       
 {% endfor %}
