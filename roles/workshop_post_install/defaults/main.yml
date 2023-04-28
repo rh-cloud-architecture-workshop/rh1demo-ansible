@@ -1,0 +1,55 @@
+become_override: false
+ocp_username: opentlc-mgr
+silent: false
+
+# OCP4 Authentication:
+ocp4_workload_authentication_htpasswd_user_password: openshift
+ocp4_workload_authentication_htpasswd_user_base: user
+ocp4_workload_authentication_htpasswd_user_count: 1
+
+# Shared Users
+ocp4_workload_cloud_architecture_workshop_user_count: "{{ ocp4_workload_authentication_htpasswd_user_count }}"
+ocp4_workload_cloud_architecture_workshop_user_prefix: "{{ ocp4_workload_authentication_htpasswd_user_base }}"
+
+# ------------------------------------------------
+# Workshop
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_namespace_prefix: globex
+
+ocp4_workload_cloud_architecture_workshop_globex_user_password: openshift
+
+# ------------------------------------------------
+# Camel module common
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_camel_common_application_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_camel_common_application_name: camel-common
+ocp4_workload_cloud_architecture_workshop_camel_common_namespace: camel-common
+ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
+ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_tag: camel-common
+ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_path: globex-camel-common
+
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_replicas: 0
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_app_id: ""
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_token_app: ""
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_token_bot: ""
+
+# ------------------------------------------------
+# Workshop Bookbag
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_bookbag: true
+ocp4_workload_cloud_architecture_workshop_bookbag_application_name: bookbag
+ocp4_workload_cloud_architecture_workshop_bookbag_namespace_prefix: bookbag
+
+ocp4_workload_cloud_architecture_workshop_bookbag_applicationset_name: bookbag
+ocp4_workload_cloud_architecture_workshop_bookbag_applicationset_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_bookbag_application_repo: >-
+  https://github.com/rh-cloud-architecture-workshop/bookbag-helm.git
+ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_tag: main
+ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path: bookbag
+
+ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_console: ""
+ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_api: ""
