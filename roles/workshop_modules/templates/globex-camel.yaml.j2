@@ -54,4 +54,12 @@ spec:
             url: "https://sso.{{ r_openshift_subdomain }}/auth/realms/globex-{{ __user }}"
             client: globex-web-gateway
             logoutUri: https://globex-web-globex-camel-{{ __user }}.{{ r_openshift_subdomain }}/home
+
+        discord:
+          discord:
+            token: discord-token-placeholder
+            guild:
+              id: discord-guild-id-placeholder
+              group: discord-guild-group-placeholder
+            
 {% endfor %}
