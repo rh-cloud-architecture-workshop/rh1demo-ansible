@@ -25,9 +25,12 @@ spec:
       values: |
 
         minio:
-          accessKey: minio
-          secretKey: minio123
-          region: us-east-1
+          minio:
+            accessKey: minio
+            secretKey: minio123
+            region: us-east-1
+          route:
+            host: minio-camel-globex-{{ __user }}.{{ r_openshift_subdomain }}
 
         kafka:
           kafka:
@@ -50,5 +53,5 @@ spec:
           sso:
             url: "https://sso.{{ r_openshift_subdomain }}/auth/realms/globex-{{ __user }}"
             client: globex-web-gateway
-            logoutUri: https://globex-web-globex-camel-{{ __user }}.{{ r_openshift_subdomain }}/home       
+            logoutUri: https://globex-web-globex-camel-{{ __user }}.{{ r_openshift_subdomain }}/home
 {% endfor %}
