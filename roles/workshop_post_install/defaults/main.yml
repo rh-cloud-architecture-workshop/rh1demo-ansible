@@ -53,3 +53,5 @@ ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path: bookbag
 
 ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_console: "<azure ocp console>"
 ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_api: "<azure ocp api>"
+
+ocp4_workload_cloud_architecture_workshop_bookbag_var_ocp_api_internal: "https://172.30.0.1:443"
