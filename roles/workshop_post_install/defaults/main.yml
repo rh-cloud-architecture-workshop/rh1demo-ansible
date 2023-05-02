@@ -32,9 +32,9 @@ ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_tag: camel-co
 ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_path: globex-camel-common
 
 ocp4_workload_cloud_architecture_workshop_camel_common_integration_replicas: 0
-ocp4_workload_cloud_architecture_workshop_camel_common_integration_app_id: ""
-ocp4_workload_cloud_architecture_workshop_camel_common_integration_token_app: ""
-ocp4_workload_cloud_architecture_workshop_camel_common_integration_token_bot: ""
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_app_id: "<slack app id>"
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_token_app: "<slack token app>"
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_token_bot: "<slack token bot>"
 
 # ------------------------------------------------
 # Workshop Bookbag
