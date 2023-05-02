@@ -51,5 +51,5 @@ ocp4_workload_cloud_architecture_workshop_bookbag_application_repo: >-
 ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_tag: main
 ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path: bookbag
 
-ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_console: ""
-ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_api: ""
+ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_console: "<azure ocp console>"
+ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_api: "<azure ocp api>"
