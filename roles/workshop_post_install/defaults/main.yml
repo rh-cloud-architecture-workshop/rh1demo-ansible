@@ -55,3 +55,20 @@ ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_console: "<azure
 ocp4_workload_cloud_architecture_workshop_bookbag_var_azure_ocp_api: "<azure ocp api>"
 
 ocp4_workload_cloud_architecture_workshop_bookbag_var_ocp_api_internal: "https://172.30.0.1:443"
+
+# ------------------------------------------------
+# Camel Secrets
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_camel_namespace_prefix: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-camel"
+
+ocp4_workload_cloud_architecture_workshop_camel_discord_secret_name: discord-credentials
+ocp4_workload_cloud_architecture_workshop_camel_discord_token: <discord token placeholder>
+ocp4_workload_cloud_architecture_workshop_camel_discord_guild_id: <discord guild id placeholder>
+ocp4_workload_cloud_architecture_workshop_camel_discord_guild_group: <discord guild group placeholder>
+
+ocp4_workload_cloud_architecture_workshop_camel_minio_secret_name: client-s3
+ocp4_workload_cloud_architecture_workshop_camel_minio_access_key: minio
+ocp4_workload_cloud_architecture_workshop_camel_minio_secret_key: minio123
+ocp4_workload_cloud_architecture_workshop_camel_minio_url_prefix: "minio-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-camel"
+ocp4_workload_cloud_architecture_workshop_camel_minio_token: "<minio token>"
