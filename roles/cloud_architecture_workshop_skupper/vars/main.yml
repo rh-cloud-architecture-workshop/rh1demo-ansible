@@ -1,0 +1,5 @@
+---
+# Internal variables, do not set
+_ocp4_workload_authentication_htpasswd_user_password: ""
+_ocp4_workload_authentication_htpasswd_user_passwords: []
+_ocp4_workload_authentication_htpasswd_admin_password: ""

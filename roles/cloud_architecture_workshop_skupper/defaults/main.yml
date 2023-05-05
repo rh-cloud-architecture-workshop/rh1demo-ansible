@@ -2,10 +2,18 @@ become_override: false
 ocp_username: opentlc-mgr
 silent: false
 
-# OCP4 Authentication:
-ocp4_workload_authentication_htpasswd_user_password: openshift
+# -------------------------------------------------------------------
+# Workload: ocp4_workload_authentication
+# -------------------------------------------------------------------
+
+ocp4_workload_authentication_idm_type: htpasswd
+ocp4_workload_authentication_admin_user: opentlc-mgr
+ocp4_workload_authentication_htpasswd_admin_password: r3dh4t1!
 ocp4_workload_authentication_htpasswd_user_base: user
+ocp4_workload_authentication_htpasswd_user_password: openshift
 ocp4_workload_authentication_htpasswd_user_count: 1
+ocp4_workload_authentication_remove_kubeadmin: true
+ocp4_workload_authentication_htpasswd_user_password_randomized: false
 
 # Shared Users
 cloud_architecture_workshop_skupper_user_count: "{{ ocp4_workload_authentication_htpasswd_user_count }}"
