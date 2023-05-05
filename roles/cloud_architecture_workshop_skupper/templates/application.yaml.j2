@@ -1,0 +1,28 @@
+{% for __user in r_cloud_architecture_workshop_users %}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "{{ cloud_architecture_workshop_skupper_application_name }}-{{ __user }}"
+  namespace: {{ cloud_architecture_workshop_skupper_application_namespace }}
+spec:
+  destination:
+    name: ""
+    namespace: "{{ cloud_architecture_workshop_skupper_namespace_prefix }}-{{ __user }}"
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: {{ cloud_architecture_workshop_skupper_application_repo }}
+    targetRevision: {{ cloud_architecture_workshop_skupper_application_repo_tag }}
+    path: {{ cloud_architecture_workshop_skupper_application_repo_path }}
+    helm:
+      values: |
+        pgsql:
+          adminPassword: adminpassword
+        service:
+          enabled: false
+{% endfor %}
