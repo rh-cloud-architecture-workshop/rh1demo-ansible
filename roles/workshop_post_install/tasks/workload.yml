@@ -1,8 +1,5 @@
 ---
 
-- name: Deploy Camel common application
-  ansible.builtin.include_tasks: camel_common.yml
-
 - name: Setup Bookbag
   when:
     - ocp4_workload_cloud_architecture_workshop_bookbag | bool
@@ -10,3 +7,6 @@
 
 - name: Deploy Camel secrets
   ansible.builtin.include_tasks: camel_secrets.yml
+
+- name: Deploy Camel common application
+  ansible.builtin.include_tasks: camel_common.yml
