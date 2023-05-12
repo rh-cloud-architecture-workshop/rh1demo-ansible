@@ -1,0 +1,42 @@
+---
+
+- name: "Get Installed CSV"
+  kubernetes.core.k8s_info:
+    api_version: operators.coreos.com/v1alpha1
+    kind: Subscription
+    name: "{{ ocp4_workload_cloud_architecture_workshop_service_registry_operator_name }}"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_service_registry_operator_namespace }}"
+  register: r_service_registry_operator_subscription
+  retries: 30
+  delay: 10
+  until:
+    - r_service_registry_operator_subscription.resources[0].status.currentCSV is defined
+    - r_service_registry_operator_subscription.resources[0].status.currentCSV | length > 0
+
+- name: "Get CSV"
+  kubernetes.core.k8s_info:
+    api_version: operators.coreos.com/v1alpha1
+    kind: ClusterServiceVersion
+    name: "{{ r_service_registry_operator_subscription.resources[0].status.currentCSV }}"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_service_registry_operator_namespace }}"
+  register: r_service_registry_operator_csv
+  retries: 40
+  delay: 30
+  until:
+    - r_service_registry_operator_csv.resources[0].status.phase is defined
+    - r_service_registry_operator_csv.resources[0].status.phase | length > 0
+    - r_service_registry_operator_csv.resources[0].status.phase == "Succeeded"
+
+- name: Patch Service Registry Operator CSV
+  kubernetes.core.k8s_json_patch:
+    api_version: operators.coreos.com/v1alpha1
+    kind: ClusterServiceVersion
+    name: "{{ r_service_registry_operator_csv.resources[0].metadata.name }}"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_service_registry_operator_namespace }}"
+    patch:
+      - op: replace
+        path: /spec/install/spec/deployments/0/spec/template/spec/containers/0/resources/limits/memory
+        value: 250Mi
+      - op: replace
+        path: /spec/install/spec/deployments/0/spec/template/spec/containers/0/resources/requests/memory
+        value: 100Mi

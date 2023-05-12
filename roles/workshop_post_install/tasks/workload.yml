@@ -10,3 +10,6 @@
 
 - name: Deploy Camel common application
   ansible.builtin.include_tasks: camel_common.yml
+
+- name: Patch Service Registry operator
+  ansible.builtin.include_tasks: service_registry_operator.yml

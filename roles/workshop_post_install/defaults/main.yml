@@ -71,4 +71,10 @@ ocp4_workload_cloud_architecture_workshop_camel_minio_secret_name: client-s3
 ocp4_workload_cloud_architecture_workshop_camel_minio_access_key: minio
 ocp4_workload_cloud_architecture_workshop_camel_minio_secret_key: minio123
 ocp4_workload_cloud_architecture_workshop_camel_minio_url_prefix: "minio-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-camel"
-ocp4_workload_cloud_architecture_workshop_camel_minio_token: "<minio token>"
+
+# ------------------------------------------------
+# Service Registry Operator
+# ------------------------------------------------
+
+ocp4_workload_cloud_architecture_workshop_service_registry_operator_name: service-registry-operator
+ocp4_workload_cloud_architecture_workshop_service_registry_operator_namespace: openshift-operators
