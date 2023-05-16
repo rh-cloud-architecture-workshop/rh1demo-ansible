@@ -13,3 +13,6 @@
 
 - name: Patch Service Registry operator
   ansible.builtin.include_tasks: service_registry_operator.yml
+
+- name: ArgoCD - provide access to cluster admin user
+  ansible.builtin.include_tasks: argocd_cluster_admin_group.yml

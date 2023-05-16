@@ -1,0 +1,11 @@
+---
+
+- name: Create group
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'cluster_admins_group.yaml.j2') | from_yaml }}"
+
+- name: Create role binding
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'cluster_admins_rolebinding.yaml.j2') | from_yaml }}"
