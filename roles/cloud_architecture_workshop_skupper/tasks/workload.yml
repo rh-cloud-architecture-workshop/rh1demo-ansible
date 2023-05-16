@@ -1,6 +1,6 @@
 ---
 
-- name: setup cluster authentication
+- name: Setup cluster authentication
   when: ocp4_workload_authentication_idm_type == "htpasswd"
   ansible.builtin.include_tasks: setup_htpasswd.yml
 
