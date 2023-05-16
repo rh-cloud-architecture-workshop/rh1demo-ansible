@@ -36,6 +36,8 @@ ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_app_id:
 ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_token_app: "<slack token app>"
 ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_token_bot: "<slack token bot>"
 
+ocp4_workload_cloud_architecture_workshop_camel_common_integration_slack_invite_url: "<slack invite url>"
+
 # ------------------------------------------------
 # Workshop Bookbag
 # ------------------------------------------------
@@ -67,10 +69,13 @@ ocp4_workload_cloud_architecture_workshop_camel_discord_token: <discord token pl
 ocp4_workload_cloud_architecture_workshop_camel_discord_guild_id: <discord guild id placeholder>
 ocp4_workload_cloud_architecture_workshop_camel_discord_guild_group: <discord guild group placeholder>
 
+ocp4_workload_cloud_architecture_workshop_camel_discord_invite_url: "<discord invite url>"
+
 ocp4_workload_cloud_architecture_workshop_camel_minio_secret_name: client-s3
 ocp4_workload_cloud_architecture_workshop_camel_minio_access_key: minio
 ocp4_workload_cloud_architecture_workshop_camel_minio_secret_key: minio123
 ocp4_workload_cloud_architecture_workshop_camel_minio_url_prefix: "minio-{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-camel"
+ocp4_workload_cloud_architecture_workshop_camel_minio_token: "<minio token>"
 
 # ------------------------------------------------
 # Service Registry Operator
