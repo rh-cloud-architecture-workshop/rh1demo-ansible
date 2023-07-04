@@ -26,4 +26,33 @@ spec:
         globex-db:
           pgsql:
             adminPassword: adminpassword
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "globex-skupper-db"
+  namespace: globex-gitops-{{ __user }}
+spec:
+  destination:
+    name: ""
+    namespace: "globex-skupper-db-{{ __user }}"
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: https://github.com/rh-cloud-architecture-workshop/helm.git
+    targetRevision: main
+    path: globex-skupper-db
+    helm:
+      values: |
+        globex-db:
+          pgsql:
+            adminPassword: adminpassword
+          service:
+            enabled: false
+        networkpolicy:
+          enabled: true
 {% endfor %}
