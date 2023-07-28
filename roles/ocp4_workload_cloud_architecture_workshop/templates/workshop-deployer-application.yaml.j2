@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_name }}
+  namespace: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_namespace }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/foreground
+spec:
+  destination:
+    name: ""
+    namespace: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_namespace }}
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo }}
+    targetRevision: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_tag }}
+    path: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_path }}
+    helm:
+      values: |
+
+        openshift:
+          domain: {{ r_openshift_subdomain }}
+
+        user:
+          count: {{ ocp4_workload_authentication_htpasswd_user_count }}
