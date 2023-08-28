@@ -335,12 +335,16 @@ ocp4_workload_cloud_architecture_workshop_serverless_operator_catalogsource_name
 ocp4_workload_cloud_architecture_workshop_serverless_operator_catalog_snapshot_image: ""
 ocp4_workload_cloud_architecture_workshop_serverless_operator_catalog_snapshot_image_tag: ""
 
+# ------------------------------------------------
+# Serverless
+# ------------------------------------------------
 ocp4_workload_cloud_architecture_workshop_serverless_serving_namespace: knative-serving
 ocp4_workload_cloud_architecture_workshop_serverless_eventing_namespace: knative-eventing
 ocp4_workload_cloud_architecture_workshop_serverless_serving_name: knative-serving
 ocp4_workload_cloud_architecture_workshop_serverless_eventing_name: knative-eventing
 ocp4_workload_cloud_architecture_workshop_serverless_serving_wait_for_deploy: true
 ocp4_workload_cloud_architecture_workshop_serverless_eventing_wait_for_deploy: true
+ocp4_workload_cloud_architecture_workshop_serverless_knative_kafka_name: knative-kafka
 
 # ------------------------------------------------
 # Threescale

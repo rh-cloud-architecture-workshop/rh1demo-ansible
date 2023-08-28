@@ -39,7 +39,7 @@
     - serverless/knative-serving.yaml.j2
     - serverless/knative-eventing.yaml.j2
 
-- name: Wait until KNative Serving installation is complete
+- name: Wait until Knative Serving installation is complete
   when: ocp4_workload_cloud_architecture_workshop_serverless_serving_wait_for_deploy | bool
   kubernetes.core.k8s_info:
     api_version: operator.knative.dev/v1beta1
@@ -61,7 +61,7 @@
     - r_kn_serving.resources[0].status.conditions[4].status is defined
     - r_kn_serving.resources[0].status.conditions[4].status == "True"
 
-- name: Wait until KNative Eventing installation is complete
+- name: Wait until Knative Eventing installation is complete
   when: ocp4_workload_cloud_architecture_workshop_serverless_eventing_wait_for_deploy | bool
   kubernetes.core.k8s_info:
     api_version: operator.knative.dev/v1beta1
@@ -82,3 +82,8 @@
     - r_kn_eventing.resources[0].status.conditions[3].status == "True"
     - r_kn_eventing.resources[0].status.conditions[4].status is defined
     - r_kn_eventing.resources[0].status.conditions[4].status == "True"
+
+- name: Deploy Knative Kafka
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/knative-kafka.yaml.j2') | from_yaml }}"
