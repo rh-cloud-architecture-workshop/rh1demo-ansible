@@ -36,7 +36,11 @@ spec:
             formSecretKey: {{ lookup('password', '/dev/null chars=ascii_letters length=32') }}
           route:
             host: {{ ocp4_workload_cloud_architecture_workshop_camel_common_synapse_matrix_host }}.{{ r_openshift_subdomain }}
-          numUsers: {{ ocp4_workload_authentication_htpasswd_user_count }} 
+          numUsers: {{ ocp4_workload_authentication_htpasswd_user_count }}
+          userPrefix: {{ ocp4_workload_cloud_architecture_workshop_user_prefix }}
+          rolebinding:
+            serviceAccountNamespace: {{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-camel
+
         rocketchat:
           rocketchat:
             route:
