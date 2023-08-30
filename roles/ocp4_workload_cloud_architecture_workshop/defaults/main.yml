@@ -489,6 +489,7 @@ ocp4_workload_cloud_architecture_workshop_workshop_deployer_namespace: workshop-
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo: https://github.com/rh-cloud-architecture-workshop/workshop-deployer-helm.git
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_tag: main
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_path: workshop-deployer
+ocp4_workload_cloud_architecture_workshop_workshop_deployer_modules_max: 2
 
 # ------------------------------------------------
 # Workshop Bookbag

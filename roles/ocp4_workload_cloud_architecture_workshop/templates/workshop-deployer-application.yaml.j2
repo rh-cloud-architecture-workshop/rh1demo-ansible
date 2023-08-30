@@ -22,8 +22,23 @@ spec:
     helm:
       values: |
 
+        image:
+          pullPolicy: Always
+
         openshift:
           domain: {{ r_openshift_subdomain }}
 
         user:
           count: {{ ocp4_workload_authentication_htpasswd_user_count }}
+
+        modules:
+          maxCount: {{ ocp4_workload_cloud_architecture_workshop_workshop_deployer_modules_max }}
+
+        bookbag:
+          namespace: {{ ocp4_workload_cloud_architecture_workshop_bookbag_namespace_prefix }}
+
+        argo:
+          namespace:
+            prefix: {{ ocp4_workload_cloud_architecture_workshop_argo_application_namespace_prefix }}
+          name:
+            prefix: {{ ocp4_workload_cloud_architecture_workshop_argo_application_name }}
