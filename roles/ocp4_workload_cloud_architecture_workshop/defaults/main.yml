@@ -53,10 +53,17 @@ ocp4_workload_cloud_architecture_workshop_openshift_pipelines_operator_catalog_s
 # OpenShift Gitops
 # ------------------------------------------------
 
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_channel: latest
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_pipelines_csv_prefix: openshift-pipelines-operator-rh
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_channel: latest
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_automatic_install_plan_approval: true
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_starting_csv: ""
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_name: openshift-gitops-operator
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_namespace: openshift-operators
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_catalog: redhat-operators
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_use_catalog_snapshot: false
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_catalogsource_name: ""
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_catalogsource_namespace: openshift-operators
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_catalog_snapshot_image: ""
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_operator_catalog_snapshot_image_tag: ""
 
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_setup_cluster_admin: true
 
@@ -73,15 +80,15 @@ ocp4_workload_cloud_architecture_workshop_openshift_gitops_applicationset_contro
 
 # Application Controller
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_update: true
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_requests_cpu: "2"
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_requests_memory: 4Gi
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_requests_cpu: 512m
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_requests_memory: 1Gi
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_limits_cpu: "4"
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_limits_memory: 4Gi
 # Setting a default value for reconcile timeout as it needs to be configurable
 # Reduce this value if you want to sync more frequently
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_app_sync: 3m
 
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_remove_memory_limits: true
+ocp4_workload_cloud_architecture_workshop_openshift_gitops_controller_remove_memory_limits: false
 
 # Redis
 ocp4_workload_cloud_architecture_workshop_openshift_gitops_redis_update: false
@@ -169,10 +176,6 @@ ocp4_workload_cloud_architecture_workshop_openshift_gitops_resource_customizatio
 # See https://github.com/redhat-cop/agnosticd/blob/development/docs/Operator_Catalog_Snapshots.adoc
 # for instructions on how to set up catalog snapshot images
 
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalogsource_name: redhat-operators-snapshot-gitops
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_cloud_architecture_workshop_openshift_gitops_catalog_snapshot_image_tag: v4.10_2022_07_18
 
 # ------------------------------------------------
 # CamelK Operator
