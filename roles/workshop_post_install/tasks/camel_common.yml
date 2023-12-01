@@ -1,6 +1,0 @@
----
-
-- name: Deploy Camel common Application
-  kubernetes.core.k8s:
-    state: present
-    definition: "{{ lookup('template', 'camel-common-application.yaml.j2') | from_yaml }}"

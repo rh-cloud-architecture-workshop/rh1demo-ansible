@@ -1,9 +1,0 @@
-{% for __user in r_cloud_architecture_workshop_users %}
-{% for __namespace in r_cloud_architecture_workshop_namespaces %}
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: '{{ __namespace.name | replace("user",__user) }}'
-{% endfor %}
-{% endfor %}
