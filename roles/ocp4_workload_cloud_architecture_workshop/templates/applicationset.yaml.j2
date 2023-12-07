@@ -36,3 +36,23 @@ spec:
             name: {{ ocp4_workload_cloud_architecture_workshop_argo_application_name }}-{% raw %}{{ user }}{% endraw %}
 
             namespace: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-gitops-{% raw %}{{ user }}{% endraw %}"
+ 
+            applicationSet:
+                requests:
+                  cpu: 100m
+            controller:
+              resources:
+                requests:
+                  cpu: 100m
+            dex:
+              resources:
+                requests:
+                  cpu: 100m
+            repo:
+              resources:
+                requests:
+                  cpu: 100m
+            server:
+              resources:
+                requests:
+                  cpu: 125m
