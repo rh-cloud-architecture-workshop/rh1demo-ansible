@@ -54,5 +54,9 @@ spec:
           hook:
             pre:
               hostPattern: {{ ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base }}-{{ ocp4_workload_cloud_architecture_workshop_user_prefix }}{n}-admin.{{ r_openshift_subdomain }}
+            post:
+              argocd:
+                enabled: true
+                syncwave: "1"
           loop:
             count: {{ ocp4_workload_cloud_architecture_workshop_user_count }}
