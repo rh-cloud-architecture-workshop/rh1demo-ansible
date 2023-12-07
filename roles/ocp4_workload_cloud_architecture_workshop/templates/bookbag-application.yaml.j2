@@ -27,6 +27,9 @@ spec:
           tag: b66aae2
         route:
           host: bookbag-{{ __user }}.{{ r_openshift_subdomain }}
+        resources:
+          requests:
+            cpu: 100m
         bookbagVariables: >-
           {"openshift_cluster_console": "https://{{ r_console_route.resources[0].spec.host }}",
           "user_name": "{{ __user }}",
