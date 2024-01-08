@@ -489,7 +489,8 @@ ocp4_workload_cloud_architecture_workshop_applicationset_namespace: openshift-gi
 
 ocp4_workload_cloud_architecture_workshop_argo_application_name: globex-gitops
 ocp4_workload_cloud_architecture_workshop_argo_application_namespace_prefix: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-gitops"
-ocp4_workload_cloud_architecture_workshop_argo_application_namespace: "{{ ocp4_workload_cloud_architecture_workshop_argo_application_namespace_prefix }}-user"
+ocp4_workload_cloud_architecture_workshop_argo_application_namespace: >-
+  {{ ocp4_workload_cloud_architecture_workshop_argo_application_namespace_prefix }}-user
 
 ocp4_workload_cloud_architecture_workshop_application_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
 ocp4_workload_cloud_architecture_workshop_application_repo_tag: main
@@ -510,10 +511,12 @@ ocp4_workload_cloud_architecture_workshop_globex_user_password: openshift
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_namespace: openshift-gitops
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_name: workshop-deployer
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_namespace: workshop-deployer
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo: https://github.com/rh-cloud-architecture-workshop/workshop-deployer-helm.git
+ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo: >-
+  https://github.com/rh-cloud-architecture-workshop/workshop-deployer-helm.git
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_tag: main
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_path: workshop-deployer
 ocp4_workload_cloud_architecture_workshop_workshop_deployer_modules_max: 2
+ocp4_workload_cloud_architecture_workshop_workshop_deployer_host: workshop-deployer
 
 # ------------------------------------------------
 # Workshop Bookbag
@@ -528,6 +531,6 @@ ocp4_workload_cloud_architecture_workshop_bookbag_application_repo: >-
 ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_tag: main
 ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path: bookbag
 
-ocp4_workload_cloud_architecture_workshop_bookbag_image_tag: 0f7cd40
+ocp4_workload_cloud_architecture_workshop_bookbag_image_tag: latest
 
 ocp4_workload_cloud_architecture_workshop_bookbag_openshift_api_internal: "https://172.30.0.1:443"
