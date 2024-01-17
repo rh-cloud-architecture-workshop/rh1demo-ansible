@@ -498,6 +498,20 @@ ocp4_workload_cloud_architecture_workshop_kafka_client_secret: globex
 ocp4_workload_cloud_architecture_workshop_globex_user_password: openshift
 
 # ------------------------------------------------
+# Workshop CDC Module
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_module_cdc_namespace_prefix: globex-cdc
+
+ocp4_workload_cloud_architecture_workshop_module_cdc_argo_application_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_module_cdc_argo_application_name: globex-cdc
+
+ocp4_workload_cloud_architecture_workshop_module_cdc_application_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
+ocp4_workload_cloud_architecture_workshop_module_cdc_application_repo_tag: rh1demo
+ocp4_workload_cloud_architecture_workshop_module_cdc_application_repo_path: globex-cdc
+
+# ------------------------------------------------
 # Workshop Service Interconnect Module
 # ------------------------------------------------
 

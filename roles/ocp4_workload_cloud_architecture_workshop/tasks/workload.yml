@@ -29,3 +29,6 @@
 
 - name: Install Skupper Module
   ansible.builtin.include_tasks: module_globex_rhsi.yml
+
+- name: Install CDC Module
+  ansible.builtin.include_tasks: module_globex_cdc.yml
