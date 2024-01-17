@@ -26,3 +26,6 @@
 
 - name: Install Workshop
   ansible.builtin.include_tasks: workshop.yml
+
+- name: Install Skupper Module
+  ansible.builtin.include_tasks: module_globex_rhsi.yml

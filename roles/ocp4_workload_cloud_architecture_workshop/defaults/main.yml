@@ -505,6 +505,21 @@ ocp4_workload_cloud_architecture_workshop_kafka_client_secret: globex
 ocp4_workload_cloud_architecture_workshop_globex_user_password: openshift
 
 # ------------------------------------------------
+# Workshop Service Interconnect Module
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_module_rhsi_namespace_prefix: globex-rhsi
+ocp4_workload_cloud_architecture_workshop_module_rhsi_db_namespace_prefix: globex-rhsi-db
+
+ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_name: globex-rhsi
+
+ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
+ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_tag: rh1demo
+ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_path: globex-skupper
+
+# ------------------------------------------------
 # Workshop Deployer
 # ------------------------------------------------
 

@@ -1,0 +1,44 @@
+{% for __user in r_cloud_architecture_workshop_users %}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_name }}-{{ __user }}
+  namespace: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_namespace }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/foreground
+spec:
+  destination:
+    name: ""
+    namespace: {{ r_cloud_architecture_workshop_module_rhsi_namespace | replace("user",__user) }}
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo }}
+    targetRevision: {{ ocp4_workload_cloud_architecture_workshop_module_apim_application_repo_tag }}
+    path: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_path }}
+    helm:
+      values: |      
+        globex-db-secret:
+          pgsql:
+            adminPassword: adminpassword
+        globex-db:
+          pgsql:
+            adminPassword: adminpassword
+          service:
+            enabled: false
+          namespace: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_db_namespace_prefix }}-{{ __user }}
+        networkpolicy:
+          enabled: true
+          namespace: {{ ocp4_workload_cloud_architecture_workshop_module_rhsi_db_namespace_prefix }}-{{ __user }}
+        globex-web:
+          sso:
+            url: "https://sso.{{ r_openshift_subdomain }}/realms/globex-{{ __user }}"
+            client: globex-web-gateway
+            logoutUri: https://globex-web-{{ r_cloud_architecture_workshop_module_rhsi_namespace | replace("user",__user) }}.{{ r_openshift_subdomain }}/home
+
+{% endfor %}
