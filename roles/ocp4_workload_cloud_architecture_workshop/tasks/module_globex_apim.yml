@@ -44,6 +44,21 @@
   vars:
     r_cloud_architecture_workshop_module_apim_namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user"
 
+- name: Wait until ArgoCD application is deployed
+  kubernetes.core.k8s_info:
+    api_version: argoproj.io/v1alpha1
+    kind: Application
+    name: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_argo_application_name }}-user1"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace }}"
+  register: r_apim_module_application
+  until:
+    - r_apim_module_application.resources[0].status.sync.status is defined
+    - r_apim_module_application.resources[0].status.sync.status == "Synced"
+    - r_apim_module_application.resources[0].status.health.status is defined
+    - r_apim_module_application.resources[0].status.health.status == "Healthy"
+  retries: 40
+  delay: 30
+
 - name: Retrieve 3scale Admin URL and token for tenant from secret
   kubernetes.core.k8s_info:
     api_version: v1
