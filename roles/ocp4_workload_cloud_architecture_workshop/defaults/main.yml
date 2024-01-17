@@ -512,6 +512,22 @@ ocp4_workload_cloud_architecture_workshop_module_cdc_application_repo_tag: rh1de
 ocp4_workload_cloud_architecture_workshop_module_cdc_application_repo_path: globex-cdc
 
 # ------------------------------------------------
+# Workshop APIM Module
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix: globex-apim
+
+ocp4_workload_cloud_architecture_workshop_module_apim_argo_application_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_module_apim_argo_application_name: globex-apim
+
+ocp4_workload_cloud_architecture_workshop_module_apim_application_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
+ocp4_workload_cloud_architecture_workshop_module_apim_application_repo_tag: rh1demo
+ocp4_workload_cloud_architecture_workshop_module_apim_application_repo_path: globex-apim
+
+ocp4_workload_cloud_architecture_workshop_module_apim_deploy_service_registry: false
+
+# ------------------------------------------------
 # Workshop Service Interconnect Module
 # ------------------------------------------------
 

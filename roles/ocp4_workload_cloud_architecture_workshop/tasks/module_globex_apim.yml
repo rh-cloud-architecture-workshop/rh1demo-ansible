@@ -1,0 +1,110 @@
+---
+
+- name: Make sure 3scale application is deployed
+  kubernetes.core.k8s_info:
+    api_version: argoproj.io/v1alpha1
+    kind: Application
+    name: "{{ ocp4_workload_cloud_architecture_workshop_threescale_apimanager_application_name }}"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_threescale_application_namespace }}"
+  register: r_threescale_application
+  until:
+    - r_threescale_application.resources[0].status.sync.status is defined
+    - r_threescale_application.resources[0].status.sync.status == "Synced"
+    - r_threescale_application.resources[0].status.health.status is defined
+    - r_threescale_application.resources[0].status.health.status == "Healthy"
+  retries: 40
+  delay: 30
+
+- name: "Create namespaces"
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'namespace.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_namespaces:
+      - name: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user"
+        managedByArgo: ""
+  retries: 10
+  delay: 30
+
+- name: "Give users access to projects"
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'rolebinding.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_bindings:
+      - namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user"
+        role: "admin"
+  retries: 10
+  delay: 30
+
+- name: Deploy ArgoCD application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'globex-apim-application.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_module_apim_namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user"
+
+- name: Retrieve 3scale Admin URL and token for tenant from secret
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Secret
+    name: 3scale-tenant-secret
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user1"
+  register: _3scale_tenant_secret
+  retries: 3
+  delay: 5
+  until:
+    - _3scale_tenant_secret.resources is defined
+    - _3scale_tenant_secret.resources | length | int > 0
+    - _3scale_tenant_secret.resources[0].data is defined
+    - _3scale_tenant_secret.resources[0].data.token is defined
+    - _3scale_tenant_secret.resources[0].data.adminURL is defined
+
+- name: Setting 3scale tenant parameters - token and admin url
+  ansible.builtin.set_fact:
+    _tenant_token: "{{ _3scale_tenant_secret.resources[0].data.token | b64decode }}"
+    _tenant_admin_url: "{{ _3scale_tenant_secret.resources[0].data.adminURL | b64decode }}"
+
+- name: Get the GlobexMobile account id
+  ansible.builtin.uri:
+    method: GET
+    url: "{{ _tenant_admin_url }}/admin/api/accounts.json?access_token={{ _tenant_token }}"
+    # headers:
+    #   Authorization: "{{ _tenant_token }}"
+    return_content: true
+    status_code: 200
+  register: _tenant_account_list
+  until: _tenant_account_list is defined
+
+- name: Get GlobexMobile Account ID
+  ansible.builtin.set_fact:
+    _account_id: "{{ _tenant_account_list | to_json | from_json | json_query(query) | first }}"
+  vars:
+    query: "json.accounts[?contains(account.org_name,'GlobexMobile')].account.id"
+
+- name: Get applications for GlobexMobile Account ID
+  ansible.builtin.uri:
+    method: GET
+    url: "{{ _tenant_admin_url }}/admin/api/accounts/{{ _account_id }}/applications.json?access_token={{ _tenant_token }}"
+    return_content: true
+    status_code: 200
+  register: _application_list
+  until: _application_list is defined
+
+- name: Get Application Id of mobile-basic-plan application
+  ansible.builtin.set_fact:
+    _application_id: "{{ _application_list | to_json | from_json | json_query(query) | first }}"
+  vars:
+    query: "json.applications[?contains(application.name,'mobile-basic-plan')].application.application_id"
+
+- name: Patch mobile web depoyment env with application id
+  ansible.builtin.command:
+    argv:
+      - oc
+      - set
+      - env
+      - deployments/globex-mobile
+      - -n
+      - "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user1"
+      - --overwrite
+      - "API_CLIENT_ID={{ _application_id }}"
