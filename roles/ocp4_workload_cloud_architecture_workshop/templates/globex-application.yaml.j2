@@ -3,8 +3,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: globex
-  namespace: {{ ocp4_workload_cloud_architecture_workshop_argo_application_namespace | replace("user",__user) }}
+  name: {{ ocp4_workload_cloud_architecture_workshop_globex_argo_application_name }}-{{ __user }}
+  namespace: {{ ocp4_workload_cloud_architecture_workshop_globex_argo_application_namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io/foreground
 spec:
@@ -60,6 +60,8 @@ spec:
             adminPassword: adminpassword
           image:
             tag: 43e87ee
+          db:
+            deploy: false      
 
         globex-web:
           sso:
