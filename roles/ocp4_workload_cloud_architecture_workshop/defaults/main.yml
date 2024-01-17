@@ -196,22 +196,6 @@ ocp4_workload_cloud_architecture_workshop_camelk_operator_catalog_snapshot_image
 ocp4_workload_cloud_architecture_workshop_camelk_operator_catalog_snapshot_image_tag: ""
 
 # ------------------------------------------------
-# Devspaces Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_channel: ""
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_name: devspaces
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_catalog_source: redhat-operators
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_deployment: devspaces-operator
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_catalogsource_name: redhat-operators-snapshot-amq-streams
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_catalog_snapshot_image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
-ocp4_workload_cloud_architecture_workshop_devspaces_operator_catalog_snapshot_image_tag: "v4.6_2021_05_10"
-
-# ------------------------------------------------
 # Threescale Operator
 # ------------------------------------------------
 
@@ -250,127 +234,6 @@ ocp4_workload_cloud_architecture_workshop_rhbk_operator_catalog_snapshot_image: 
 ocp4_workload_cloud_architecture_workshop_rhbk_operator_catalog_snapshot_image_tag: ""
 
 # ------------------------------------------------
-# Datagrid Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_name: datagrid
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_channel: ""
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_catalog: redhat-operators
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_csv_prefix: datagrid-operator
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_datagrid_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# AMQ Broker Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_channel: "7.11.x"
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_name: amq-broker-rhel8
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_catalog: redhat-operators
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_csv_prefix: amq-broker-operator
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_amq_broker_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# Web Terminal Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_channel: "fast"
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_name: web-terminal
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_csv_prefix: web-terminal
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_catalog_source: redhat-operators
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_deployment: web-terminal-controller
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_webterminal_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# Service Registry Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_channel: "2.x"
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_name: service-registry-operator
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_catalog: redhat-operators
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_csv_prefix: service-registry-operator
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_service_registry_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# Apicurio Designer Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_channel: "fuse-apicurito-7.12.x"
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_name: fuse-apicurito
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_namespace: apicurio-designer
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_catalog: redhat-operators
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_csv_prefix: fuse-apicurito
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_deployment: fuse-apicurito
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_apicurio_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# Serverless Operator
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_serverless_operator_channel: ""
-ocp4_workload_cloud_architecture_workshop_serverless_operator_automatic_install_plan_approval: true
-ocp4_workload_cloud_architecture_workshop_serverless_operator_starting_csv: ""
-ocp4_workload_cloud_architecture_workshop_serverless_operator_name: serverless-operator
-ocp4_workload_cloud_architecture_workshop_serverless_operator_namespace: openshift-serverless
-ocp4_workload_cloud_architecture_workshop_serverless_operator_catalog: redhat-operators
-ocp4_workload_cloud_architecture_workshop_serverless_operator_csv_prefix: serverless-operator
-ocp4_workload_cloud_architecture_workshop_serverless_operator_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_serverless_operator_use_catalog_snapshot: false
-ocp4_workload_cloud_architecture_workshop_serverless_operator_catalogsource_name: ""
-ocp4_workload_cloud_architecture_workshop_serverless_operator_catalogsource_namespace: openshift-operators
-ocp4_workload_cloud_architecture_workshop_serverless_operator_catalog_snapshot_image: ""
-ocp4_workload_cloud_architecture_workshop_serverless_operator_catalog_snapshot_image_tag: ""
-
-# ------------------------------------------------
-# Serverless
-# ------------------------------------------------
-ocp4_workload_cloud_architecture_workshop_serverless_serving_namespace: knative-serving
-ocp4_workload_cloud_architecture_workshop_serverless_eventing_namespace: knative-eventing
-ocp4_workload_cloud_architecture_workshop_serverless_serving_name: knative-serving
-ocp4_workload_cloud_architecture_workshop_serverless_eventing_name: knative-eventing
-ocp4_workload_cloud_architecture_workshop_serverless_serving_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_serverless_eventing_wait_for_deploy: true
-ocp4_workload_cloud_architecture_workshop_serverless_knative_kafka_name: knative-kafka
-
-# ------------------------------------------------
 # Threescale
 # ------------------------------------------------
 
@@ -396,27 +259,6 @@ ocp4_workload_cloud_architecture_workshop_threescale_tenant_org_name_base: 3scal
 ocp4_workload_cloud_architecture_workshop_threescale_tenant_admin_password: "openshift"
 
 # ------------------------------------------------
-# Devspaces
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_devspaces_name: devspaces
-ocp4_workload_cloud_architecture_workshop_devspaces_namespace: devspaces
-ocp4_workload_cloud_architecture_workshop_devspaces_user_namespace_prefix: devspaces
-ocp4_workload_cloud_architecture_workshop_devspaces_user_namespace: >-
-  "{{ ocp4_workload_cloud_architecture_workshop_devspaces_user_namespace_prefix }}-<username>"
-ocp4_workload_cloud_architecture_workshop_devspaces_template_name: che-code-workspace
-ocp4_workload_cloud_architecture_workshop_devspaces_devworkspace_name: cloud-architecture-workshop
-ocp4_workload_cloud_architecture_workshop_devspaces_project_git: https://github.com/rh-cloud-architecture-workshop/workshop-devspaces.git
-ocp4_workload_cloud_architecture_workshop_devspaces_project_name: workshop-devspaces
-ocp4_workload_cloud_architecture_workshop_devspaces_tools_image: quay.io/cloud-architecture-workshop/devspaces-image:0e90287
-
-# ------------------------------------------------
-# Web terminal tooling image
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_webterminal_tooling_image: quay.io/cloud-architecture-workshop/web-terminal-tooling:skupper
-
-# ------------------------------------------------
 # Red Hat build of Keycloak
 # ------------------------------------------------
 
@@ -434,47 +276,6 @@ ocp4_workload_cloud_architecture_workshop_rhbk_max_time_to_wait: 600000
 
 ocp4_workload_cloud_architecture_workshop_rhbk_realm: globex
 ocp4_workload_cloud_architecture_workshop_rhbk_web_gateway_client: globex-web-gateway
-
-# ------------------------------------------------
-# Apicurio Designer
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_apicurio_application_namespace: openshift-gitops
-ocp4_workload_cloud_architecture_workshop_apicurio_application_name: apicurio
-ocp4_workload_cloud_architecture_workshop_apicurio_namespace: "{{ ocp4_workload_cloud_architecture_workshop_apicurio_operator_namespace }}"
-ocp4_workload_cloud_architecture_workshop_apicurio_gitops_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
-ocp4_workload_cloud_architecture_workshop_apicurio_gitops_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_apicurio_gitops_repo_path: globex-apicurio-designer
-
-ocp4_workload_cloud_architecture_workshop_apicurio_replicas: 1
-ocp4_workload_cloud_architecture_workshop_apicurio_ui_host: apicurio-designer
-ocp4_workload_cloud_architecture_workshop_apicurio_generator_host: apicurio-generator
-
-# ------------------------------------------------
-# Camel module common
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_camel_common_application_namespace: openshift-gitops
-ocp4_workload_cloud_architecture_workshop_camel_common_application_name: camel-common
-ocp4_workload_cloud_architecture_workshop_camel_common_namespace: camel-common
-ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo: https://github.com/rh-cloud-architecture-workshop/helm.git
-ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_camel_common_gitops_repo_path: globex-camel-common
-
-ocp4_workload_cloud_architecture_workshop_camel_common_synapse_matrix_host: matrix-synapse
-ocp4_workload_cloud_architecture_workshop_camel_common_rocketchat_host: rocketchat
-ocp4_workload_cloud_architecture_workshop_camel_common_element_host: element
-
-# ------------------------------------------------
-# Backstage
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_backstage_application_namespace: openshift-gitops
-ocp4_workload_cloud_architecture_workshop_backstage_application_name: backstage
-ocp4_workload_cloud_architecture_workshop_backstage_namespace: backstage
-ocp4_workload_cloud_architecture_workshop_backstage_gitops_repo: https://github.com/rh-cloud-architecture-workshop/globex-backstage-helm
-ocp4_workload_cloud_architecture_workshop_backstage_gitops_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_backstage_gitops_repo_path: charts/backstage
 
 # ------------------------------------------------
 # Workshop
@@ -541,34 +342,3 @@ ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_name: glo
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_tag: rh1demo
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_path: globex-skupper
-
-# ------------------------------------------------
-# Workshop Deployer
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_namespace: openshift-gitops
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_application_name: workshop-deployer
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_namespace: workshop-deployer
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo: >-
-  https://github.com/rh-cloud-architecture-workshop/workshop-deployer-helm.git
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_gitops_repo_path: workshop-deployer
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_modules_max: 2
-ocp4_workload_cloud_architecture_workshop_workshop_deployer_host: workshop-deployer
-
-# ------------------------------------------------
-# Workshop Bookbag
-# ------------------------------------------------
-
-ocp4_workload_cloud_architecture_workshop_bookbag: true
-ocp4_workload_cloud_architecture_workshop_bookbag_application_name: bookbag
-ocp4_workload_cloud_architecture_workshop_bookbag_namespace_prefix: bookbag
-
-ocp4_workload_cloud_architecture_workshop_bookbag_application_repo: >-
-  https://github.com/rh-cloud-architecture-workshop/bookbag-helm.git
-ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_tag: main
-ocp4_workload_cloud_architecture_workshop_bookbag_application_repo_path: bookbag
-
-ocp4_workload_cloud_architecture_workshop_bookbag_image_tag: latest
-
-ocp4_workload_cloud_architecture_workshop_bookbag_openshift_api_internal: "https://172.30.0.1:443"
