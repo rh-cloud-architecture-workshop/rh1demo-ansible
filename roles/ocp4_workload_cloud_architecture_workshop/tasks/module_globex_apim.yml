@@ -108,9 +108,15 @@
 
 - name: Get Application Id of mobile-basic-plan application
   ansible.builtin.set_fact:
-    _application_id: "{{ _application_list | to_json | from_json | json_query(query) | first }}"
+    _application_application_id: "{{ _application_list | to_json | from_json | json_query(query) | first }}"
   vars:
     query: "json.applications[?contains(application.name,'mobile-basic-plan')].application.application_id"
+
+- name: Get Id of mobile-basic-plan application
+  ansible.builtin.set_fact:
+    _application_id: "{{ _application_list | to_json | from_json | json_query(query) | first }}"
+  vars:
+    query: "json.applications[?contains(application.name,'mobile-basic-plan')].application.id"
 
 - name: Patch mobile web depoyment env with application id
   ansible.builtin.command:
@@ -122,4 +128,64 @@
       - -n
       - "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user1"
       - --overwrite
-      - "API_CLIENT_ID={{ _application_id }}"
+      - "API_CLIENT_ID={{ _application_application_id }}"
+
+- name: Set the redirect URL on the application
+  ansible.builtin.uri:
+    method: PUT
+    url: "{{ _tenant_admin_url }}/admin/api/accounts/{{ _account_id }}/applications/{{ _application_id }}.xml?access_token={{ _tenant_token }}"
+    return_content: true
+    status_code: 200
+    body_format: form-urlencoded
+    body:
+      - [access_token, "{{ _tenant_token }}"]
+      - [name, "mobile-basic-plan"]
+      - [redirect_url, "*"]
+
+- name: Get a token for the admin-cli client of the SSO realm
+  ansible.builtin.uri:
+    method: POST
+    url: "https://sso.{{ r_openshift_subdomain }}/realms/globex-user1/protocol/openid-connect/token"
+    return_content: true
+    status_code: 200
+    body_format: form-urlencoded
+    body:
+      - [username, "user1"]
+      - [password, "openshift"]
+      - [grant_type, "password"]
+      - [client_id, "admin-cli"]
+  register: _sso_token
+  until: _sso_token
+
+- name: Set admin token
+  ansible.builtin.set_fact:
+    _sso_admin_token: "{{ _sso_token | to_json | from_json | json_query('json.access_token') }}"
+
+- name: Get client id of SSO client
+  ansible.builtin.uri:
+    method: GET
+    url: "https://sso.{{ r_openshift_subdomain }}/admin/realms/globex-user1/clients"
+    headers:
+      Authorization: Bearer {{ _sso_admin_token }}
+      Accept: application/json
+    return_content: true
+    status_code: 200
+  register: _sso_client_list
+  until: _sso_client_list is defined
+
+- name: Get Id of sso client
+  ansible.builtin.set_fact:
+    _sso_client_id: "{{ _sso_client_list | to_json | from_json | json_query(query) | first }}"
+  vars:
+    query: "json[?contains(clientId, '{{ _application_application_id }}')].id"
+
+- name: Set weborigins for sso client
+  ansible.builtin.uri:
+    method: PUT
+    url: "https://sso.{{ r_openshift_subdomain }}/admin/realms/globex-user1/clients/{{ _sso_client_id }}"
+    headers:
+      Authorization: Bearer {{ _sso_admin_token }}
+    body_format: json
+    body: '{ "webOrigins": ["https://globex-mobile-globex-apim-user1.{{ r_openshift_subdomain }}"] }'
+    return_content: true
+    status_code: 204
