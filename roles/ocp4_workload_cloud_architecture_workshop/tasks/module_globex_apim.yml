@@ -99,8 +99,6 @@
   ansible.builtin.uri:
     method: GET
     url: "{{ _tenant_admin_url }}/admin/api/accounts.json?access_token={{ _tenant_token }}"
-    # headers:
-    #   Authorization: "{{ _tenant_token }}"
     return_content: true
     status_code: 200
   register: _tenant_account_list
@@ -204,3 +202,55 @@
     body: '{ "webOrigins": ["https://globex-mobile-globex-apim-user1.{{ r_openshift_subdomain }}"] }'
     return_content: true
     status_code: 204
+
+- name: Get Product Id for globex-mobile-gateway-product
+  kubernetes.core.k8s_info:
+    api_version: capabilities.3scale.net/v1beta1
+    kind: Product
+    name: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_mobile_gateway_product }}"
+    namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_apim_namespace_prefix }}-user1"
+  register: r_globex_mobile_gateway_product
+  retries: 10
+  delay: 10
+  until:
+    - r_globex_mobile_gateway_product is defined
+    - r_globex_mobile_gateway_product.resources | length | int > 0
+    - r_globex_mobile_gateway_product.resources[0].status is defined
+    - r_globex_mobile_gateway_product.resources[0].status.productId is defined
+
+- name: Set product id
+  ansible.builtin.set_fact:
+    _mobile_gateway_product_id: "{{ r_globex_mobile_gateway_product.resources[0].status.productId }}"
+
+- name: Promote globex-mobile-gateway-product to staging
+  ansible.builtin.uri:
+    method: POST
+    url: "{{ _tenant_admin_url }}/admin/api/services/{{ _mobile_gateway_product_id }}/proxy/deploy.json?access_token={{ _tenant_token }}"
+    return_content: true
+    status_code: 201
+    body_format: form-urlencoded
+    body:
+      - [access_token, "{{ _tenant_token }}"]
+
+- name: Get the latest proxy config
+  ansible.builtin.uri:
+    method: GET
+    url: "{{ _tenant_admin_url }}/admin/api/services/{{ _mobile_gateway_product_id }}/proxy/configs/sandbox/latest.json?access_token={{ _tenant_token }}"
+    return_content: true
+    status_code: 200
+  register: r_proxy_config
+
+- name: Set latest proxy config
+  ansible.builtin.set_fact:
+    _mobile_gateway_product_proxy_config: "{{ r_proxy_config.json.proxy_config.version }}"
+
+- name: Promote globex-mobile-gateway-product to production
+  ansible.builtin.uri:
+    method: POST
+    url: "{{ _tenant_admin_url }}/admin/api/services/{{ _mobile_gateway_product_id }}/proxy/configs/sandbox/{{ _mobile_gateway_product_proxy_config }}/promote.json"
+    return_content: true
+    status_code: 201
+    body_format: form-urlencoded
+    body:
+      - [access_token, "{{ _tenant_token }}"]
+      - [to, "production"]

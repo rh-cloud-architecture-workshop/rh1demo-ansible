@@ -46,7 +46,7 @@ spec:
             privateBaseURL: http://globex-mobile-gateway.globex-apim-{{ __user }}.svc.cluster.local:8080
         
         mobile-gateway-product:
-          nameOverride: globex-mobile-gateway-product
+          nameOverride: {{ ocp4_workload_cloud_architecture_workshop_module_apim_mobile_gateway_product }}
           product:
             issuerEndpoint: https://client-manager:9JRzL6le4K47JJkcSs6kjd9j2Mmfh1Jc@sso.{{ r_openshift_subdomain }}/realms/globex-{{ __user }}
         

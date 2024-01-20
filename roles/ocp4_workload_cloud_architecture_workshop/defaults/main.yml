@@ -328,6 +328,8 @@ ocp4_workload_cloud_architecture_workshop_module_apim_application_repo_path: glo
 
 ocp4_workload_cloud_architecture_workshop_module_apim_deploy_service_registry: false
 
+ocp4_workload_cloud_architecture_workshop_module_apim_mobile_gateway_product: globex-mobile-gateway-product
+
 # ------------------------------------------------
 # Workshop Service Interconnect Module
 # ------------------------------------------------
