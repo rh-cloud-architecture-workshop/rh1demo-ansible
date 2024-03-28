@@ -18,6 +18,9 @@
 - name: Install Red Hat Build of Keycloak Operator
   ansible.builtin.include_tasks: rhbk_operator.yml
 
+- name: Install OpenShift Serverless
+  ansible.builtin.include_tasks: serverless.yml
+
 - name: Install 3scale with Gitops
   ansible.builtin.include_tasks: threescale-gitops.yml
 
