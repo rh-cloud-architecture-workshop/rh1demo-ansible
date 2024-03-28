@@ -1,0 +1,30 @@
+---
+
+- name: "Create namespaces"
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'namespace.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_namespaces:
+      - name: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix }}-user"
+        managedByArgo: ""
+  retries: 10
+  delay: 30
+
+- name: "Give users access to projects"
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'rolebinding.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_bindings:
+      - namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix }}-user"
+        role: "admin"
+  retries: 10
+  delay: 30
+
+- name: Deploy ArgoCD application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'globex-serverless-application.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_module_serverless_namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix }}-user"

@@ -277,7 +277,7 @@ ocp4_workload_cloud_architecture_workshop_threescale_namespace: 3scale
 ocp4_workload_cloud_architecture_workshop_threescale_apimanager_application_name: threescale
 
 ocp4_workload_cloud_architecture_workshop_threescale_minio_stateful: true
-ocp4_workload_cloud_architecture_workshop_threescale_minio_storageclass: ocs-external-storagecluster-ceph-rbd
+ocp4_workload_cloud_architecture_workshop_threescale_minio_storageclass: gp3-csi
 ocp4_workload_cloud_architecture_workshop_threescale_minio_default_region: us-east-1
 ocp4_workload_cloud_architecture_workshop_threescale_minio_access_key_id: minio
 ocp4_workload_cloud_architecture_workshop_threescale_minio_secret_access_key: minio123
@@ -373,3 +373,17 @@ ocp4_workload_cloud_architecture_workshop_module_rhsi_argo_application_name: glo
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo: https://github.com/btison/cloud-architecture-workshop-helm.git
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_tag: rh1demo
 ocp4_workload_cloud_architecture_workshop_module_rhsi_application_repo_path: globex-skupper
+
+# ------------------------------------------------
+# Workshop Serverless Module
+# ------------------------------------------------
+
+# Namespaces
+ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix: globex-serverless
+
+ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_namespace: openshift-gitops
+ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_name: globex-serverless
+
+ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo: https://github.com/btison/globex-sentiment-analysis-helm.git
+ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo_tag: rh1demo
+ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo_path: globex-sentiment-analysis/sentiment-analysis

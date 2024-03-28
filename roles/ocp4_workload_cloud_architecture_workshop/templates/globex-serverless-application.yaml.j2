@@ -1,0 +1,91 @@
+{% for __user in r_cloud_architecture_workshop_users %}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_name }}-{{ __user }}
+  namespace: {{ ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+spec:
+  ignoreDifferences:
+    - group: serving.knative.dev
+      kind: Service
+      jsonPointers:
+        - "/spec/template/spec/containers/0/name"
+        - "/spec/template/spec/containers/0/env"
+
+  destination:
+    name: ""
+    namespace: {{ r_cloud_architecture_workshop_module_serverless_namespace | replace("user",__user) }}
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: {{ ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo }}
+    targetRevision: {{ ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo_tag }}
+    path: {{ ocp4_workload_cloud_architecture_workshop_module_serverless_application_repo_path }}
+    helm:
+      values: |
+        kafka:
+          namespace: &namespace globex-mw-{{ __user }}
+          bootstrapServer: &bootstrapServer kafka-kafka-bootstrap.globex-mw-{{ __user }}.svc.cluster.local:9092
+
+        kafka-topics:
+          kafka:
+            namespace: *namespace
+            cluster: kafka
+
+        kafka-secret:
+          kafka:
+            namespace: *namespace
+
+        knative-kafkasink:
+          kafka:
+            bootstrapServer: *bootstrapServer
+
+        knative-kafkasource:
+          kafka:
+            bootstrapServer: *bootstrapServer
+
+        product-reviews:
+          kafkaSink:
+            reviews: ${K_SINK}
+
+        aiml-moderate-reviews:
+          gunicorn:
+            threads: "4"
+            timeout: "180"
+
+        aiml-sentiment-reviews:
+          gunicorn:
+            threads: "4"
+            timeout: "180"
+
+        globex-web-reviews:
+          globexStoreApp:
+            url: http://globex-store-app.globex-{{ __user }}.svc.cluster.local:8080
+          activityTrackingService:
+            url: http://activity-tracking.globex-{{ __user }}.svc.cluster.local:8080
+            service: activity-tracking
+            path: /track
+          recommendationEngine:
+            url: http://recommendation-engine.globex-{{ __user }}.svc.cluster.local:8080
+            service: recommendation-engine
+            path: /score/product
+
+          productReviews:
+            url: http://product-reviews.{{ r_cloud_architecture_workshop_module_serverless_namespace | replace("user",__user) }}.svc.cluster.local:8080
+            submitReviewPath: /review/submit
+            fetchReviewPath: /review/list
+
+          sso:
+            url: "https://sso.{{ r_openshift_subdomain }}/realms/globex-{{ __user }}"
+            client: globex-web-gateway
+            logoutUri: https://globex-web-{{ r_cloud_architecture_workshop_module_serverless_namespace | replace("user",__user) }}.{{ r_openshift_subdomain }}/home
+
+{% endfor %}
+
