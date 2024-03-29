@@ -9,6 +9,9 @@
 - name: Remove RHSI Module
   ansible.builtin.include_tasks: remove_module_globex_rhsi.yml
 
+- name: Remove Serverless Module
+  ansible.builtin.include_tasks: remove_module_globex_serverless.yml
+
 - name: Remove Globex application
   ansible.builtin.include_tasks: remove_workshop.yml
 
