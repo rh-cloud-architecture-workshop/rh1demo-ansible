@@ -36,8 +36,8 @@
 - name: Install CDC Module
   ansible.builtin.include_tasks: module_globex_cdc.yml
 
-- name: Install APIM Module
-  ansible.builtin.include_tasks: module_globex_apim.yml
-
 - name: Install Serverless Module
   ansible.builtin.include_tasks: module_globex_serverless.yml
+
+- name: Install APIM Module
+  ansible.builtin.include_tasks: module_globex_apim.yml
