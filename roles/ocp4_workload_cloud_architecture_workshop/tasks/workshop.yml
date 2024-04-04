@@ -25,6 +25,16 @@
   retries: 10
   delay: 30
 
+- name: Deploy operatorgroup
+  kubernetes.core.k8s:
+    state: present
+    resource_definition: "{{ lookup('template', 'operatorgroup.yaml.j2') }}"
+  vars:
+    r_cloud_architecture_workshop_operatorgroup_namespaces:
+      - name: "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-mw-user"
+  retries: 10
+  delay: 30
+
 - name: Deploy Globex application
   kubernetes.core.k8s:
     state: present
