@@ -123,7 +123,7 @@
   ansible.builtin.set_fact:
     _application_application_id: "{{ _application_list | to_json | from_json | json_query(query) | first }}"
   vars:
-    query: "json.applications[?contains(application.name,'mobile-basic-plan')].application.application_id"
+    query: "json.applications[?contains(application.name,'mobile-basic-plan')].application.id"
 
 - name: Get Id of mobile-basic-plan application
   ansible.builtin.set_fact:
