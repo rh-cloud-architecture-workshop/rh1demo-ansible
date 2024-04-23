@@ -1,6 +1,41 @@
 ---
 
+- name: Install AMQ Streams operator
+  ansible.builtin.include_tasks: amq_streams_operator.yml
+
+- name: Install OpenShift Pipelines operator
+  ansible.builtin.include_tasks: openshift_pipelines_operator.yml
+
+- name: Install OpenShift Gitops
+  ansible.builtin.include_tasks: openshift_gitops.yml
+
+- name: Install Red Hat Build of Keycloak Operator
+  ansible.builtin.include_tasks: rhbk_operator.yml
+
+- name: Install OpenShift Serverless
+  ansible.builtin.include_tasks: serverless.yml
+
+- name: Install RHBK
+  ansible.builtin.include_tasks: rhbk.yml
+
+- name: Install Workshop
+  ansible.builtin.include_tasks: workshop.yml
+
+- name: Install Skupper Module
+  ansible.builtin.include_tasks: module_globex_rhsi.yml
+
 
 - name: Install Serverless Module
   ansible.builtin.include_tasks: module_globex_serverless.yml
 
+
+- name: Install Grafana Influx
+  ansible.builtin.include_tasks: grafana-influx.yml
+
+- name: 60 second pause for influxdb start
+  pause:
+    seconds: 60
+
+- name: Setup InfluxDB
+  ansible.builtin.shell:
+    cmd: oc exec -it "$(oc get pod -n influxdb-project | grep influxdb | awk '/^influxdb/ {print $1; exit}')" -n influxdb-project -- influx setup --org globex --bucket globex-bucket --username globex --password globex123 --token 91XvhQY1nzme54HHzaRVlJUp8lJ2EoB8frQ7rksiZju3G5eAomPSBifL3oveHlAPiV8yDn4AmjmJ6fZA2ajXfQ== --force
