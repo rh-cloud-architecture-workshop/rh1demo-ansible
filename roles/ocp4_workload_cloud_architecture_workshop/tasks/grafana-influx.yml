@@ -1,19 +1,19 @@
 - name: influxdb-setup
   k8s:
     state: present
-    definition: "{{ lookup('template', 'influxdb.yaml') }}"
+    definition: "{{ lookup('template', 'serverless/influxdb.yaml') }}"
 
 - name: kafka-to-influxdb
   k8s:
     state: present
-    definition: "{{ lookup('template', 'kafka-to-influxdb.yaml') }}"
+    definition: "{{ lookup('template', 'serverless/kafka-to-influxdb.yaml') }}"
 
 - name: grafana
   k8s:
     state: present
-    definition: "{{ lookup('template', 'grafana.yaml') }}"
+    definition: "{{ lookup('template', 'serverless/grafana.yaml') }}"
 
 - name: reviews-simulator
   k8s:
     state: present
-    definition: "{{ lookup('template', 'reviews-simulator.yaml') }}"
+    definition: "{{ lookup('template', 'serverless/reviews-simulator.yaml') }}"
