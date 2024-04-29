@@ -73,6 +73,7 @@
       - -n
       - "{{ ocp4_workload_cloud_architecture_workshop_namespace_prefix }}-user1"
       - /tmp/skupper.token
+  ignore_errors: true
 
 - name: Run rhsi cli commands (4)
   ansible.builtin.command:
@@ -83,6 +84,7 @@
       - -n
       - "{{ ocp4_workload_cloud_architecture_workshop_module_rhsi_db_namespace_prefix }}-user1"
       - /tmp/skupper.token
+  ignore_errors: true
 
 - name: Run rhsi cli commands (5)
   ansible.builtin.command:

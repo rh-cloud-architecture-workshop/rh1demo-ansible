@@ -59,7 +59,7 @@ spec:
         deployment: influxdb
     spec:
       containers:
-      - image: influxdb@sha256:11c5ec3b6f57701fb9ba1822a6ba58cf39e2deab5aa8d37b52de06fc6ec76723
+      - image: quay.io/globex-sentiment-analysis/influxdb
         imagePullPolicy: IfNotPresent
         name: influxdb-pod
         securityContext:

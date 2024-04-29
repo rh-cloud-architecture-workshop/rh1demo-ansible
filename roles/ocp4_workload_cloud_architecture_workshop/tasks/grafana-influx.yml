@@ -12,8 +12,3 @@
   k8s:
     state: present
     definition: "{{ lookup('template', 'serverless/grafana.yaml') }}"
-
-- name: reviews-simulator
-  k8s:
-    state: present
-    definition: "{{ lookup('template', 'serverless/reviews-simulator.yaml') }}"

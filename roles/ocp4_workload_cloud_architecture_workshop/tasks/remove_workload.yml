@@ -1,13 +1,5 @@
 ---
 
-- name: Remove APIM Module
-  ansible.builtin.include_tasks: remove_module_globex_apim.yml
-
-- name: Remove CDC Module
-  ansible.builtin.include_tasks: remove_module_globex_cdc.yml
-
-- name: Remove RHSI Module
-  ansible.builtin.include_tasks: remove_module_globex_rhsi.yml
 
 - name: Remove Serverless Module
   ansible.builtin.include_tasks: remove_module_globex_serverless.yml
@@ -17,9 +9,6 @@
 
 - name: Remove RHBK
   ansible.builtin.include_tasks: remove_rhbk.yml
-
-- name: Remove 3scale
-  ansible.builtin.include_tasks: remove_threescale.yml
 
 - name: Remove Namespaces
   ansible.builtin.include_tasks: remove_namespaces.yml
