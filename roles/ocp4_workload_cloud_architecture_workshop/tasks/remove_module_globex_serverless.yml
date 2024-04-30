@@ -8,3 +8,13 @@
     name: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_name }}-user1"
     namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_argo_application_namespace }}"
     wait: true
+
+
+- name: Undeploy influxdb-setup
+  kubernetes.core.k8s:
+    state: absent
+    api_version: v1
+    kind: Namespace
+    name: "influxdb-project-user1"
+    namespace: "influxdb-project-user1"
+    wait: true

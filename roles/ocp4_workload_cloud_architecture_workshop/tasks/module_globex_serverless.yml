@@ -28,3 +28,24 @@
     definition: "{{ lookup('template', 'globex-serverless-application.yaml.j2') }}"
   vars:
     r_cloud_architecture_workshop_module_serverless_namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix }}-user"
+
+- name: influxdb-setup
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/influxdb.yaml') }}"
+
+- name: kafka-to-influxdb
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/kafka-to-influxdb.yaml') }}"
+
+- name: grafana
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/grafana.yaml') }}"
+
+
+- name: reviews-simulator
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/reviews-simulator.yaml') }}"
