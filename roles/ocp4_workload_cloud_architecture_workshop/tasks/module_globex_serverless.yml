@@ -28,3 +28,33 @@
     definition: "{{ lookup('template', 'globex-serverless-application.yaml.j2') }}"
   vars:
     r_cloud_architecture_workshop_module_serverless_namespace: "{{ ocp4_workload_cloud_architecture_workshop_module_serverless_namespace_prefix }}-user"
+
+- name: influxdb-setup
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/influxdb.yaml') }}"
+
+- name: kafka-to-influxdb
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/kafka-to-influxdb.yaml') }}"
+
+- name: grafana
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/grafana.yaml') }}"
+
+
+- name: reviews-simulator
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'serverless/reviews-simulator.yaml') }}"
+
+- name: 60 second pause for influxdb start
+  pause:
+    seconds: 60
+
+- name: Setup InfluxDB
+  ansible.builtin.shell:
+    cmd: oc exec -it "$(oc get pod -n influxdb-project | grep influxdb | awk '/^influxdb/ {print $1; exit}')" -n influxdb-project -- influx setup --org globex --bucket globex-bucket --username globex --password globex123 --token 91XvhQY1nzme54HHzaRVlJUp8lJ2EoB8frQ7rksiZju3G5eAomPSBifL3oveHlAPiV8yDn4AmjmJ6fZA2ajXfQ== --force
+
