@@ -21,13 +21,9 @@
 - name: Install Workshop
   ansible.builtin.include_tasks: workshop.yml
 
-- name: Install Skupper Module
-  ansible.builtin.include_tasks: module_globex_rhsi.yml
-
 
 - name: Install Serverless Module
   ansible.builtin.include_tasks: module_globex_serverless.yml
-
 
 - name: Install Grafana Influx
   ansible.builtin.include_tasks: grafana-influx.yml
