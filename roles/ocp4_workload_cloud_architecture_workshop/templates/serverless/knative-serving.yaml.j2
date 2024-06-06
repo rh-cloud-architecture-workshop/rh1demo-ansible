@@ -3,3 +3,9 @@ kind: KnativeServing
 metadata:
  name: {{ ocp4_workload_cloud_architecture_workshop_serverless_serving_name }}
  namespace: {{ ocp4_workload_cloud_architecture_workshop_serverless_serving_namespace }}
+spec: 
+  config:
+    features:
+      kubernetes.containerspec-addcapabilities: enabled
+      kubernetes.podspec-securitycontext: enabled
+      secure-pod-defaults: enabled

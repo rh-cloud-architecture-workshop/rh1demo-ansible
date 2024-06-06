@@ -5,3 +5,5 @@
 .vscode
 
 .ansible-lint
+
+.DS_Store
